@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">cuciin_android</string>
+    <string name="login_text">Log In</string>
+    <string name="cuciin_text">CUCI-IN</string>
+    <string name="description_text">Aplikasi yang memudahkan anda\ndalam mencuci pakaian anda</string>
+    <string name="login_btn">Log In</string>
+    <string name="signup_btn_text">Sign up</string>
 </resources>
