@@ -8,4 +8,10 @@
     <string name="register_btn">Sign Up</string>
     <string name="register_str">Don\'t have any account ? </string>
     <string name="description_text">Aplikasi yang memudahkan anda\ndalam mencuci pakaian anda</string>
+    <string name="create_account">Create\n Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_account">Already have an account ?</string>
 </resources>
