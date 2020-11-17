@@ -22,7 +22,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/ibHomeIcon"
+                android:id="@+id/ibHome"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="13dp"
@@ -30,7 +30,7 @@
                 android:background="@drawable/ic_home_icon" />
 
             <ImageButton
-                android:id="@+id/ibCartIcon"
+                android:id="@+id/ibCart"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="13dp"
@@ -38,7 +38,7 @@
                 android:background="@drawable/ic_cart_icon" />
 
             <ImageButton
-                android:id="@+id/ibWashmachineIcon"
+                android:id="@+id/ibWashmachine"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="13dp"
@@ -46,7 +46,7 @@
                 android:background="@drawable/ic_washmachine_icon" />
 
             <ImageButton
-                android:id="@+id/ibAccountIcon"
+                android:id="@+id/ibAccount"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="13dp"
