@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/colorToolbar"
+        android:elevation="100dp"
+        android:theme="?attr/actionBarTheme"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ibHome"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="45dp"
+                android:background="@drawable/ic_home_icon" />
+
+            <ImageButton
+                android:id="@+id/ibCart"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/ic_cart_icon" />
+
+            <ImageButton
+                android:id="@+id/ibWashmachine"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="55dp"
+                android:background="@drawable/ic_washmachine_icon" />
+
+            <ImageButton
+                android:id="@+id/ibAccount"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="45dp"
+                android:background="@drawable/ic_account_icon" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:id="@+id/vMenuBarShadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="73dp"
+        android:background="@drawable/custom_shadow_top" />
+
+</RelativeLayout>
