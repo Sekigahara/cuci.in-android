@@ -45,7 +45,7 @@ public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAd
 
     public RecycleViewAdapterNearby.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_nearby_list, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
+        RecycleViewAdapterNearby.MyViewHolder myViewHolder = new RecycleViewAdapterNearby.MyViewHolder(view);
 
         return myViewHolder;
     }
