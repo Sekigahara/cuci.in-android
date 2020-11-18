@@ -2,17 +2,17 @@ package com.example.cuciin_android.data.model;
 
 public class Transaction {
     private int id;
-    private String po_number;
-    private String address;
-    private float price;
-    private float amount;
-    private int laundry_type;
-    private String status;
     private int customer_id;
     private int outlet_id;
+    private Invoice invoice;
+    private LaundryType laundryType;
 
-    public Transaction(){
-
+    public Transaction(int id, int customer_id, int outlet_id, Invoice invoice, LaundryType laundryType){
+        this.id = id;
+        this.customer_id = customer_id;
+        this.outlet_id = outlet_id;
+        this.invoice = invoice;
+        this.laundryType = laundryType;
     }
 
     public int getId() {
@@ -23,52 +23,20 @@ public class Transaction {
         this.id = id;
     }
 
-    public String getPo_number() {
-        return po_number;
+    public void setInvoice(Invoice invoice){
+        this.invoice = invoice;
     }
 
-    public void setPo_number(String po_number) {
-        this.po_number = po_number;
+    public Invoice getInvoice(){
+        return invoice;
     }
 
-    public String getAddress() {
-        return address;
+    public LaundryType getLaundryType() {
+        return laundryType;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public int getLaundry_type() {
-        return laundry_type;
-    }
-
-    public void setLaundry_type(int laundry_type) {
-        this.laundry_type = laundry_type;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setLaundryType(LaundryType laundry_type) {
+        this.laundryType = laundry_type;
     }
 
     public int getCustomer_id() {

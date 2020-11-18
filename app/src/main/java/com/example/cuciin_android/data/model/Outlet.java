@@ -9,7 +9,7 @@ public class Outlet {
     private String phone;
     private float rating;
     private ArrayList<Integer> manhoursList;
-    private ArrayList<String> laundryTypeList;
+    private ArrayList<LaundryType> laundryTypeList;
 
     public Outlet(){
         manhoursList = new ArrayList<>();
@@ -20,7 +20,7 @@ public class Outlet {
         manhoursList.add(manhour);
     }
 
-    public void addLaundryType(String laundry_type){
+    public void addLaundryType(LaundryType laundry_type){
         laundryTypeList.add(laundry_type);
     }
 
@@ -72,11 +72,11 @@ public class Outlet {
         this.manhoursList = manhoursList;
     }
 
-    public ArrayList<String> getLaundryTypeList() {
+    public ArrayList<LaundryType> getLaundryTypeList() {
         return laundryTypeList;
     }
 
-    public void setLaundryTypeList(ArrayList<String> laundryTypeList) {
+    public void setLaundryTypeList(ArrayList<LaundryType> laundryTypeList) {
         this.laundryTypeList = laundryTypeList;
     }
 }

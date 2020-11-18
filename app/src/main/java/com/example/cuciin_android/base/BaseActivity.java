@@ -34,9 +34,9 @@ public abstract  class BaseActivity extends FragmentActivity implements Fragment
             fragmentTransaction.addToBackStack(currentFragment.getTitle());
         }
 
-        //fragmentTransaction.replace(R.id.flFragmentContainer, fragment, fragment.getTitle());
-        //fragmentTransaction.commit();
+        fragmentTransaction.replace(R.id.flFragmentContainer, fragment, fragment.getTitle());
+        fragmentTransaction.commit();
 
-        //this.currentFragment = fragment;
+        this.currentFragment = fragment;
     }
 }

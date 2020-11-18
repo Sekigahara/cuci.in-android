@@ -28,4 +28,6 @@
     <string name="pembatas">-------------------------------------------------------------------------</string>
     <string name="total_pembayaran">Total Pembayaran</string>
     <string name="tracking_pemesanan">Tracking Pemesanan</string>
+    <string name="filter">Filter</string>
+    <string name="sort_by">sort by</string>
 </resources>
