@@ -8,10 +8,24 @@
     <string name="register_btn">Sign Up</string>
     <string name="register_str">Don\'t have any account ? </string>
     <string name="description_text">Aplikasi yang memudahkan anda\ndalam mencuci pakaian anda</string>
-    <string name="create_account">Create\n Account</string>
+    <string name="create_account">Create\nAccount</string>
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
     <string name="already_account">Already have an account ?</string>
+    <string name="detail_transaksi">Detail Transaksi</string>
+    <string name="order">Order</string>
+    <string name="nama_laundry">Nama Laundry</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="informasi_pembayaran">Informasi Pembayaran</string>
+    <string name="item">Item</string>
+    <string name="berat">Berat</string>
+    <string name="harga_satuan">Harga Satuan</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="cuci_regular">Cuci Regular</string>
+    <string name="cuci_express">Cuci Express</string>
+    <string name="pembatas">-------------------------------------------------------------------------</string>
+    <string name="total_pembayaran">Total Pembayaran</string>
+    <string name="tracking_pemesanan">Tracking Pemesanan</string>
 </resources>
