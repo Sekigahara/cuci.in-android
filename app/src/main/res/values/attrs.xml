@@ -4,5 +4,5 @@
     <attr name="colorPrimary" format="color"/>
     <attr name="colorAccentr" format="color"/>
     <attr name="statusBarColor" format="color"/>
-
+    <attr name="fontColor" format="color"/>
 </resources>
