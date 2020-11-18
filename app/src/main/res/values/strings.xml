@@ -18,6 +18,6 @@
     <string name="sort_by">sort by</string>
     <string name="tracking">Tracking Pesanan\nOrder #189</string>
     <string name="detail">Detail</string>
-    <string name="time">09/01/2020/n09:40 WIB</string>
+    <string name="time">09/01/2020\n09:40 WIB</string>
     <string name="status">Status</string>
 </resources>

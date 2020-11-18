@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tracking">
+    tools:context=".activity.modul.tracking.Tracking">
 
     <View
         android:id="@+id/view"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="436dp"
         android:background="@drawable/tracking"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,8 +29,6 @@
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.415" />
-
-    <include layout="@layout/toolbar" />
 
     <TextView
         android:id="@+id/textView5"
@@ -109,5 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:srcCompat="@drawable/timeline" />
+
+    <include layout="@layout/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

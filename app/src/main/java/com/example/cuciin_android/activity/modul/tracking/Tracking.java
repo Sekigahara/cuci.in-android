@@ -1,8 +1,10 @@
-package com.example.cuciin_android;
+package com.example.cuciin_android.activity.modul.tracking;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.cuciin_android.R;
 
 public class Tracking extends AppCompatActivity {
 
