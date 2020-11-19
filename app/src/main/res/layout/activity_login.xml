@@ -80,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -114,10 +114,10 @@
             android:layout_marginTop="24dp"
             android:text="@string/register_str"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register_btn"
