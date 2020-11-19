@@ -1,5 +1,6 @@
 package com.example.cuciin_android.activity.modul.register;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.landing.LandingActivity;
 import com.example.cuciin_android.base.BaseFragment;
 
 public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterContract.Presenter> implements RegisterContract.View {
+
     Button btSignUp;
     TextView tvSignIn;
     EditText etFullName;
@@ -23,7 +26,8 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
     EditText etPhone;
     EditText etPassword;
     EditText etConfirmPassword;
-    SearchView svNearby;
+    TextView icBtBack;
+
     public RegisterFragment(){
 
     }
@@ -42,6 +46,7 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
         etPhone = fragmentView.findViewById(R.id.editText_phone);
         etPassword = fragmentView.findViewById(R.id.editText_password);
         etConfirmPassword = fragmentView.findViewById(R.id.editText_confirm_password);
+        icBtBack = fragmentView.findViewById(R.id.icBtBack);
 
         btSignUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -49,11 +54,18 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
             }
         });
 
+        icBtBack.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                gotoNewTask(new Intent(activity, LandingActivity.class));
+            }
+        });
+
         return fragmentView;
     }
 
-    public void gotoNewTask(){
-
+    public void gotoNewTask(Intent intent){
+        startActivity(intent);
+        activity.finish();
     }
 
     public void setPresenter(RegisterContract.Presenter presenter){
