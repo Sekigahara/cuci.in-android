@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +51,9 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
 
         btSignUp.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-
+                onRegisterButtonClick(etFullName.getText().toString(), etUsername.getText().toString(),
+                                        etEmail.getText().toString(), etPhone.getText().toString(),
+                                        etPassword.getText().toString(), etConfirmPassword.getText().toString());
             }
         });
 
@@ -61,6 +64,16 @@ public class RegisterFragment extends BaseFragment<RegisterActivity, RegisterCon
         });
 
         return fragmentView;
+    }
+
+    public void onRegisterButtonClick(String full_name, String username, String email, String phone, String password, String confirm){
+        String message = mPresenter.onRegister(full_name, username, email, phone, password, confirm);
+
+        if(message.equals("passed"))
+            mPresenter.validateRegister(getActivity() ,full_name, username, email, phone, password, confirm);
+        else{
+            Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+        }
     }
 
     public void gotoNewTask(Intent intent){

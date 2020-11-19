@@ -3,7 +3,7 @@ package com.example.cuciin_android.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataObj {
+public class DataUserObj {
 
     @SerializedName("token")
     @Expose
