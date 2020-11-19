@@ -34,4 +34,12 @@
     <string name="detail">Detail</string>
     <string name="time">09/01/2020\n09:40 WIB</string>
     <string name="status">Status</string>
+    <string name="oprational_hours_title">Operational Hours:</string>
+    <string name="open">open</string>
+    <string name="closed">closed</string>
+    <string name="default_rating">0.0</string>
+    <string name="title_card_laundry">Title Laundry</string>
+    <string name="operational_hours_default">00:00 - 00:00</string>
+    <string name="kg">Kg</string>
+    <string name="defalt_amount">0</string>
 </resources>
