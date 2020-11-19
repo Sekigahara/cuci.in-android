@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
-import com.example.cuciin_android.data.model.ResObj;
+import com.example.cuciin_android.data.model.UserObj;
 import com.example.cuciin_android.data.model.User;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
@@ -32,15 +32,15 @@ public class LoginPresenter implements LoginContract.Presenter{
 
     public void validateLogin(final User user, final Activity activity){
         mApiService = UtilsApi.getAPIService();
-        Call<ResObj> call = mApiService.loginRequest(user.getUsername(), user.getPassword());
-        call.enqueue(new Callback<ResObj>() {
+        Call<UserObj> call = mApiService.loginRequest(user.getUsername(), user.getPassword());
+        call.enqueue(new Callback<UserObj>() {
             @Override
-            public void onResponse(Call<ResObj> call, Response<ResObj> response) {
+            public void onResponse(Call<UserObj> call, Response<UserObj> response) {
                 if(response.isSuccessful() == true){
-                    ResObj resObj = response.body();
-                    if(resObj.getSuccess() == true){
+                    UserObj userObj = response.body();
+                    if(userObj.getSuccess() == true){
                         Toast.makeText(activity, "Login Success", Toast.LENGTH_LONG).show();
-                        String token = resObj.getDataObj().getToken();
+                        String token = userObj.getDataObj().getToken();
 
                         Intent intent = new Intent(activity, DashboardActivity.class);
                         intent.putExtra("token", token);

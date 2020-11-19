@@ -3,14 +3,14 @@ package com.example.cuciin_android.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResObj {
+public class UserObj {
 
     @SerializedName("success")
     @Expose
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private DataObj data;
+    private DataUserObj data;
     @SerializedName("message")
     @Expose
     private String message;
@@ -23,11 +23,11 @@ public class ResObj {
         this.success = success;
     }
 
-    public DataObj getDataObj() {
+    public DataUserObj getDataObj() {
         return data;
     }
 
-    public void setDataObj(DataObj data) {
+    public void setDataObj(DataUserObj data) {
         this.data = data;
     }
 

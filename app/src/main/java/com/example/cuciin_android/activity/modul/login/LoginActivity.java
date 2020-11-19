@@ -22,7 +22,7 @@ public class LoginActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.GONE);
 
         loginFragment = new LoginFragment();
-        setCurrentFragment(loginFragment, true);
+        setCurrentFragment(loginFragment, false);
     }
 
     public void setTitle(String title){
