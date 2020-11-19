@@ -48,286 +48,234 @@
         app:layout_constraintStart_toEndOf="@+id/textView_order"
         app:layout_constraintTop_toBottomOf="@+id/textView_detail" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <RelativeLayout
+        android:id="@+id/relativeLayout_main"
         android:layout_width="342dp"
-        android:layout_height="414dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="140dp"
         android:background="@drawable/rounded_corner"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_detail">
 
-
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView_detail_transaksi"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/detail_transaksi"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/nama_laundry"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:text="Sagiri Laundry"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/lokasi"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="89dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:text="Jl. Belimbing 5 No 12, Surabaya"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="70dp"
-            android:text="@string/informasi_pembayaran"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto"
+            android:text="Detail Transaksi"
+            android:textColor="?attr/fontColor"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView11" />
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_laundry_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="35dp"
+                    android:text="Nama Laundry" />
+
+                <TextView
+                    android:id="@+id/textView_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Lokasi" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_laundry_name_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="35dp"
+                    android:text="Sagiri Laundry" />
+
+                <TextView
+                    android:id="@+id/textView_location_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Jl. Belimbing 5. no 12 Surabaya" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView14"
-            android:layout_width="45dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/item"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            android:id="@+id/textView_informasi_pembayaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="145dp"
+            android:fontFamily="@font/roboto"
+            android:text="Informasi Pembayaran"
+            android:textColor="?attr/fontColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="41dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/berat"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="165dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="85dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/harga_satuan"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            <TextView
+                android:id="@+id/textView_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto"
+                android:text="Item"
+                android:textColor="?attr/fontColor" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="51dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/jumlah"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            <TextView
+                android:id="@+id/textView_berat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto"
+                android:text="Berat"
+                android:textColor="?attr/fontColor" />
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="85dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/cuci_regular"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            <TextView
+                android:id="@+id/textView_harga_satuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto"
+                android:text="Harga Satuan"
+                android:textColor="?attr/fontColor" />
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="40dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="3 kg"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+            <TextView
+                android:id="@+id/textView_jumlah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto"
+                android:text="Jumlah"
+                android:textColor="?attr/fontColor" />
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Rp 3.000"
-            app:layout_constraintStart_toEndOf="@+id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="Rp 9.000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp">
 
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="85dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/cuci_express"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="40dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="3 kg"
-            app:layout_constraintStart_toEndOf="@+id/textView22"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTransaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="25dp">
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Rp 5.000"
-            app:layout_constraintStart_toEndOf="@+id/textView23"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                </androidx.recyclerview.widget.RecyclerView>
 
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="68dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="Rp 15.000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView24"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                <TextView
+                    android:id="@+id/textView_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="-----------------------------------------------------------------------------" />
 
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="306dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/pembatas"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="122dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/total_pembayaran"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                    <TextView
+                        android:id="@+id/textView_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Total Pembayaran" />
 
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="67dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="Rp 24.000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                    <TextView
+                        android:id="@+id/textView_total_fill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:text="Rp. 24.000" />
+                </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="343dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:orientation="horizontal"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        android:background="@drawable/rounded_corner">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout_main">
 
         <TextView
-            android:id="@+id/textView29"
-            android:layout_width="178dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="13dp"
-            android:text="@string/tracking_pemesanan"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/textView_tracking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="10dp"
+            android:text="Tracking Pemesanan" />
 
-        <TextView
-            android:id="@+id/textView30"
-            android:layout_width="36dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="20dp"
-            android:drawableEnd="@drawable/ic_arrow_forward"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="145dp"
+            android:background="@drawable/ic_arrow_forward"
+            />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <include layout="@layout/toolbar" />
-    <include layout="@layout/base_toolbar_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

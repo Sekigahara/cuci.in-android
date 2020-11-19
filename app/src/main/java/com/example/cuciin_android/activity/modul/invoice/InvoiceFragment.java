@@ -1,50 +1,51 @@
-package com.example.cuciin_android.activity.modul.nearby;
+package com.example.cuciin_android.activity.modul.invoice;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.Outlet;
-import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
+import com.example.cuciin_android.data.model.Transaction;
+import com.example.cuciin_android.utils.RecycleViewAdapterInvoice;
 
 import java.util.ArrayList;
 
-public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.Presenter> implements NearbyContract.View {
+public class InvoiceFragment extends BaseFragment<InvoiceActivity, InvoiceContract.Presenter> implements InvoiceContract.View {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
-    SearchView svNearby;
-    public NearbyFragment(){
+    TextView tvLaundryName;
+    TextView tvLocation;
+    TextView tvTotal;
+
+    public InvoiceFragment(){
 
     }
 
-    public android.view.View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreateView(inflater, container, savedInstanceState);
-        fragmentView = inflater.inflate(R.layout.fragment_nearby, container, false);
-        mPresenter = new NearbyPresenter(this);
+        fragmentView = inflater.inflate(R.layout.activity_detail_transaction, container, false);
+        mPresenter = new InvoicePresenter(this);
         mPresenter.start();
 
-        mRecyclerView = fragmentView.findViewById(R.id.rvNearby);
+        mRecyclerView = fragmentView.findViewById(R.id.rvTransaction);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        final ArrayList<Outlet> data = mPresenter.getDataset();
-        mAdapter = new RecycleViewAdapterNearby(data);
+        final ArrayList<Transaction> data = mPresenter.getDataset();
+        mAdapter = new RecycleViewAdapterInvoice(data);
         mRecyclerView.setAdapter(mAdapter);
 
-
-
-        svNearby = fragmentView.findViewById(R.id.svNearby);
-
+        tvLaundryName = (TextView) fragmentView.findViewById(R.id.textView_laundry_name_fill);
+        tvLocation = (TextView) fragmentView.findViewById(R.id.textView_location_fill);
+        tvTotal = (TextView) fragmentView.findViewById(R.id.textView_total_fill);
         /*
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
@@ -62,7 +63,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
 
     }
 
-    public void setPresenter(NearbyContract.Presenter presenter){
+    public void setPresenter(InvoiceContract.Presenter presenter){
         mPresenter = presenter;
     }
 }

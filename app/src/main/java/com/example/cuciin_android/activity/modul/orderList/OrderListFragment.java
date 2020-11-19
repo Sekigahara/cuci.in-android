@@ -1,7 +1,6 @@
-package com.example.cuciin_android.activity.modul.nearby;
+package com.example.cuciin_android.activity.modul.orderList;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,37 +12,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.Outlet;
+import com.example.cuciin_android.data.model.Transaction;
 import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
+import com.example.cuciin_android.utils.RecycleViewAdapterOrderList;
 
 import java.util.ArrayList;
 
-public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.Presenter> implements NearbyContract.View {
+public class OrderListFragment extends BaseFragment<OrderListActivity, OrderListContract.Presenter> implements OrderListContract.View {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
-    SearchView svNearby;
-    public NearbyFragment(){
+    public OrderListFragment(){
 
     }
 
-    public android.view.View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreateView(inflater, container, savedInstanceState);
-        fragmentView = inflater.inflate(R.layout.fragment_nearby, container, false);
-        mPresenter = new NearbyPresenter(this);
+        fragmentView = inflater.inflate(R.layout.activity_order_list, container, false);
+        mPresenter = new OrderListPresenter(this);
         mPresenter.start();
 
-        mRecyclerView = fragmentView.findViewById(R.id.rvNearby);
+        mRecyclerView = fragmentView.findViewById(R.id.rvOrderList);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        final ArrayList<Outlet> data = mPresenter.getDataset();
-        mAdapter = new RecycleViewAdapterNearby(data);
+        final ArrayList<Transaction> data = mPresenter.getDataset();
+        mAdapter = new RecycleViewAdapterOrderList(data);
         mRecyclerView.setAdapter(mAdapter);
 
-
-
-        svNearby = fragmentView.findViewById(R.id.svNearby);
 
         /*
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
@@ -62,7 +59,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
 
     }
 
-    public void setPresenter(NearbyContract.Presenter presenter){
+    public void setPresenter(OrderListContract.Presenter presenter){
         mPresenter = presenter;
     }
 }
