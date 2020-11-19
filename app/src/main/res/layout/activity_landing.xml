@@ -7,7 +7,7 @@
     android:background="@drawable/landing_page">
 
     <TextView
-        android:id="@+id/tittle_text"
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -50,7 +50,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/btLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
@@ -63,7 +63,7 @@
             android:textStyle="bold"/>
 
         <Button
-            android:id="@+id/signup_button"
+            android:id="@+id/btSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

@@ -3,14 +3,27 @@ package com.example.cuciin_android.activity.modul.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.nearby.NearbyFragment;
+import com.example.cuciin_android.base.BaseFragmentHolderActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseFragmentHolderActivity {
+    LoginFragment loginFragment;
+    protected void initializeFragment(){
+        initializeView();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        ibHome.setVisibility(View.GONE);
+        ibCart.setVisibility(View.GONE);
+        ibAccount.setVisibility(View.GONE);
+        ibWashmachine.setVisibility(View.GONE);
+
+        loginFragment = new LoginFragment();
+        setCurrentFragment(loginFragment, true);
+    }
+
+    public void setTitle(String title){
+
     }
 }

@@ -41,7 +41,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         mAdapter = new RecycleViewAdapterNearby(data);
         mRecyclerView.setAdapter(mAdapter);
 
-        
+
 
         svNearby = fragmentView.findViewById(R.id.svNearby);
 
