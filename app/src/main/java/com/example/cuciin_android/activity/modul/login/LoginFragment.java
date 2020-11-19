@@ -1,5 +1,6 @@
 package com.example.cuciin_android.activity.modul.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.landing.LandingActivity;
 import com.example.cuciin_android.activity.modul.register.RegisterActivity;
 import com.example.cuciin_android.base.BaseFragment;
+import com.example.cuciin_android.data.model.User;
+import com.example.cuciin_android.helper.ApiService;
+import com.example.cuciin_android.helper.UtilsApi;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements LoginContract.View {
     EditText etUsername;
@@ -21,6 +29,7 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
     Button btLogin;
     TextView tvSignUp;
     TextView icBtBack;
+
     public LoginFragment(){
 
     }
@@ -39,7 +48,7 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
 
         btLogin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-
+                setBtnLoginOnClick(new User(etUsername.getText().toString(), etPassword.getText().toString()));
             }
         });
 
@@ -56,6 +65,18 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
         });
 
         return fragmentView;
+    }
+
+    public void setBtnLoginOnClick(final User user){
+        int loginCode = mPresenter.onLogin(user);
+
+        if(loginCode == 0)
+            Toast.makeText(getActivity(), "You Must Enter Your Username", Toast.LENGTH_LONG).show();
+        else if(loginCode == 1)
+            Toast.makeText(getActivity(), "Password Must be Greater than 6 Characters", Toast.LENGTH_LONG).show();
+        else {
+            mPresenter.validateLogin(user, getActivity());
+        }
     }
 
     public void gotoNewTask(Intent intent){

@@ -53,9 +53,9 @@
         android:text="@string/time"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_Nearby"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintTop_toTopOf="@+id/imageView_Nearby" />
 
     <TextView
         android:id="@+id/textView7"
@@ -66,8 +66,8 @@
         android:text="@string/time"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_Nearby"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_Nearby"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -80,8 +80,8 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_Nearby"
+        app:layout_constraintTop_toTopOf="@+id/imageView_Nearby" />
 
     <TextView
         android:id="@+id/textViewNamaLaundry"
@@ -93,12 +93,12 @@
         android:text="@string/status"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_Nearby"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_Nearby" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_Nearby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
