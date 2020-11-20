@@ -1,5 +1,7 @@
 package com.example.cuciin_android.data.model;
 
+import android.text.TextUtils;
+
 public class User {
     private int id;
     private String full_name;
@@ -8,8 +10,18 @@ public class User {
     private String phone;
     private String email;
 
-    public User(){
+    public User(int id, String full_name, String username, String password, String phone, String email){
+        this.id = id;
+        this.full_name = full_name;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+    }
 
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
     }
 
     public int getId() {
@@ -58,5 +70,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int isValidData(){
+        if(TextUtils.isEmpty(getUsername()))
+            return 0;
+        else if(getPassword().length() <= 6)
+            return 1;
+        else
+            return 2;
     }
 }
