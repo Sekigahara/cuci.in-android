@@ -4,16 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.Outlet;
-import com.example.cuciin_android.data.model.Transaction;
-import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
 import com.example.cuciin_android.utils.RecycleViewAdapterOrderList;
 
 import java.util.ArrayList;
@@ -37,9 +33,9 @@ public class OrderListFragment extends BaseFragment<OrderListActivity, OrderList
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        final ArrayList<Transaction> data = mPresenter.getDataset();
-        mAdapter = new RecycleViewAdapterOrderList(data);
-        mRecyclerView.setAdapter(mAdapter);
+        //final ArrayList<Transaction> data = mPresenter.getDataset();
+        //mAdapter = new RecycleViewAdapterOrderList(data);
+        //mRecyclerView.setAdapter(mAdapter);
 
 
         /*

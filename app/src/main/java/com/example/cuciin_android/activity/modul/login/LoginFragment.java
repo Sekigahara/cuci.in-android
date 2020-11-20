@@ -1,6 +1,5 @@
 package com.example.cuciin_android.activity.modul.login;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,20 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.landing.LandingActivity;
 import com.example.cuciin_android.activity.modul.register.RegisterActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.User;
-import com.example.cuciin_android.helper.ApiService;
-import com.example.cuciin_android.helper.UtilsApi;
-
-import retrofit2.Call;
-import retrofit2.Callback;
+import com.example.cuciin_android.data.source.session.UserSessionRepositoryRepository;
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements LoginContract.View {
     EditText etUsername;
@@ -37,7 +32,7 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
     public android.view.View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.activity_login, container, false);
-        mPresenter = new LoginPresenter(this);
+        mPresenter = new LoginPresenter(this, new UserSessionRepositoryRepository(getActivity()));
         mPresenter.start();
 
         etUsername = fragmentView.findViewById(R.id.editTextTextPersonName2);
@@ -82,6 +77,10 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
     public void gotoNewTask(Intent intent){
         startActivity(intent);
         activity.finish();
+    }
+
+    public void gotoDashboard(){
+        gotoNewTask(new Intent(activity, DashboardActivity.class));
     }
 
     public void setPresenter(LoginContract.Presenter presenter){

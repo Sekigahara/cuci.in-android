@@ -1,25 +1,16 @@
 package com.example.cuciin_android.activity.modul.landing;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.SearchView;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.login.LoginActivity;
 import com.example.cuciin_android.activity.modul.register.RegisterActivity;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.Outlet;
-import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
-
-import java.util.ArrayList;
 
 public class LandingFragment extends BaseFragment<LandingActivity, LandingContract.Presenter> implements LandingContract.View {
     Button btSignup;

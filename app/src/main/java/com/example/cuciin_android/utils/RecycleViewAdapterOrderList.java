@@ -3,18 +3,16 @@ package com.example.cuciin_android.utils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
-import com.example.cuciin_android.data.model.Transaction;
 
 import java.util.ArrayList;
 
 public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleViewAdapterOrderList.MyViewHolder>{
-    private static ArrayList<Transaction> mDataset;
+    //private static ArrayList<Transaction> mDataset;
     private static RecycleViewAdapterOrderList.MyClickListener myClickListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -36,8 +34,8 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
         }
     }
 
-    public RecycleViewAdapterOrderList(ArrayList<Transaction> myDataset){
-        mDataset = myDataset;
+    public RecycleViewAdapterOrderList(/*ArrayList<Transaction> myDataset*/){
+        //mDataset = myDataset;
     }
 
     public RecycleViewAdapterOrderList.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -54,7 +52,7 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
     }
 
     public int getItemCount(){
-        return mDataset.size();
+        return 0;//mDataset.size();
     }
 
     public void setOnItemClickListener(RecycleViewAdapterOrderList.MyClickListener myClickListener){

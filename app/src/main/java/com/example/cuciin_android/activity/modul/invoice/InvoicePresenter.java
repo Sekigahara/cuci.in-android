@@ -1,8 +1,5 @@
 package com.example.cuciin_android.activity.modul.invoice;
 
-import com.example.cuciin_android.data.model.Outlet;
-import com.example.cuciin_android.data.model.Transaction;
-
 import java.util.ArrayList;
 
 public class InvoicePresenter implements InvoiceContract.Presenter{
@@ -14,11 +11,5 @@ public class InvoicePresenter implements InvoiceContract.Presenter{
 
     public void start(){
 
-    }
-
-    public ArrayList<Transaction> getDataset(){
-        ArrayList<Transaction> data = new ArrayList<>();
-
-        return data;
     }
 }

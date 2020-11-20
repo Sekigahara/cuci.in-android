@@ -1,16 +1,18 @@
 package com.example.cuciin_android.data.model;
 
+import java.io.Serializable;
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserObj {
+public class OutletObj implements Serializable {
 
     @SerializedName("success")
     @Expose
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private DataUserObj data;
+    private List<DataOutletObj> data = null;
     @SerializedName("message")
     @Expose
     private String message;
@@ -23,11 +25,11 @@ public class UserObj {
         this.success = success;
     }
 
-    public DataUserObj getDataObj() {
+    public List<DataOutletObj> getData() {
         return data;
     }
 
-    public void setDataObj(DataUserObj data) {
+    public void setData(List<DataOutletObj> data) {
         this.data = data;
     }
 
@@ -38,4 +40,5 @@ public class UserObj {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

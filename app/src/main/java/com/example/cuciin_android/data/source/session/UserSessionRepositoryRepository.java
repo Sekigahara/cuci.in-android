@@ -3,19 +3,19 @@ package com.example.cuciin_android.data.source.session;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.cuciin_android.data.model.User;
+import com.example.cuciin_android.data.model.LoginObj;
 import com.google.gson.Gson;
 
-public class UserSessionRepositoryRepository implements SessionRepository<User> {
+public class UserSessionRepositoryRepository implements SessionRepository<LoginObj> {
     private static String SESSION_USER = "SessionUser";
     private SharedPreferences sharedPref;
 
-    public UserSessionRepositoryRepository(Context context) {
+    public UserSessionRepositoryRepository(Context context)  {
         sharedPref = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
     }
 
     @Override
-    public User initialize(User sessionData) {
+    public LoginObj initialize(LoginObj sessionData) {
         //save to shared preference
         setSessionData(sessionData);
 
@@ -24,16 +24,16 @@ public class UserSessionRepositoryRepository implements SessionRepository<User> 
     }
 
     @Override
-    public User getSessionData() {
+    public LoginObj getSessionData() {
         String sessionDataJson = sharedPref.getString(SESSION_USER, null);
         if (sessionDataJson != null) {
-            return new Gson().fromJson(sessionDataJson, User.class);
+            return new Gson().fromJson(sessionDataJson, LoginObj.class);
         }
         return null;
     }
 
     @Override
-    public void setSessionData(User sessionData) {
+    public void setSessionData(LoginObj sessionData) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(SESSION_USER, new Gson().toJson(sessionData));
         editor.apply();
@@ -45,7 +45,7 @@ public class UserSessionRepositoryRepository implements SessionRepository<User> 
     }
 
     @Override
-    public void update(User sessionData) {
+    public void update(LoginObj sessionData) {
         destroy();
         setSessionData(sessionData);
     }
