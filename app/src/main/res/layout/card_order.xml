@@ -17,7 +17,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewTypeLaundry"
             android:layout_width="60dp"
             android:layout_height="60dp"
             tools:srcCompat="@drawable/ic_t_shirt" />
@@ -76,7 +76,7 @@
             android:textColor="@color/light_blue" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imageButtonAddData"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_weight="1"

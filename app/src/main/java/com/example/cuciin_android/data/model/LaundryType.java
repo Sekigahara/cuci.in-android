@@ -2,6 +2,8 @@ package com.example.cuciin_android.data.model;
 
 public class LaundryType {
     private String name;
+    private String deskripsi;
+    private String price;
 
     public LaundryType(String name){
         this.name = name;

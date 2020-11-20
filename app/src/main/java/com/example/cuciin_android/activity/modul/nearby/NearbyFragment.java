@@ -45,16 +45,14 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
 
         svNearby = fragmentView.findViewById(R.id.svNearby);
 
-        /*
-        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
+        /*((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
             public void onItemClick(int position, View view) {
                 String id = data.get(position).getId();
                 Log.d("Dashboard", ">>>>" + position);
                 goToSchedule(id);
             }
-        });
-        */
+        });*/
         return fragmentView;
     }
 
