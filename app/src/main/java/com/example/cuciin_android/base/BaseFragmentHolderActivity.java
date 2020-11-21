@@ -1,5 +1,6 @@
 package com.example.cuciin_android.base;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -31,5 +32,11 @@ public abstract class BaseFragmentHolderActivity extends BaseActivity {
         ibAccount = (ImageButton) findViewById(R.id.ibAccount);
         vMenuBarShadow = findViewById(R.id.vMenuBarShadow);
         rlActivityFragmentHolder = (RelativeLayout) findViewById(R.id.rlActivityFragmentHolder);
+
+        ibCart.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+
+            }
+        });
     }
 }

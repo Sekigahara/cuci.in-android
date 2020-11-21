@@ -21,10 +21,7 @@ public class DashboardActivity extends BaseFragmentHolderActivity {
         ibAccount.setVisibility(View.VISIBLE);
         ibWashmachine.setVisibility(View.VISIBLE);
 
-        Bundle extras = getIntent().getExtras();
-        LoginObj loginObj = (LoginObj) extras.getSerializable("session");
-
-        dashboardFragment = new DashboardFragment(loginObj);
+        dashboardFragment = new DashboardFragment();
         setCurrentFragment(dashboardFragment, true);
     }
 

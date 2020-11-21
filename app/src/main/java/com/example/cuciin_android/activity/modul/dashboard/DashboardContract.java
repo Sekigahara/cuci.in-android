@@ -1,6 +1,7 @@
 package com.example.cuciin_android.activity.modul.dashboard;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import com.example.cuciin_android.base.BasePresenter;
@@ -14,5 +15,6 @@ public interface DashboardContract {
 
     interface Presenter extends BasePresenter {
         void getOutletData(Activity activity, LoginObj loginObj);
+        void getOutletData(Activity activity, Context context);
     }
 }

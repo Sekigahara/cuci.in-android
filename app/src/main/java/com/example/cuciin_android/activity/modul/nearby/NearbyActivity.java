@@ -18,10 +18,9 @@ public class NearbyActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.VISIBLE);
 
         Bundle extras = getIntent().getExtras();
-        LoginObj loginObj = (LoginObj) extras.getSerializable("session");
         OutletObj outletObj = (OutletObj) extras.getSerializable("outlet");
 
-        nearbyFragment = new NearbyFragment(loginObj, outletObj);
+        nearbyFragment = new NearbyFragment(outletObj);
         setCurrentFragment(nearbyFragment, true);
     }
 

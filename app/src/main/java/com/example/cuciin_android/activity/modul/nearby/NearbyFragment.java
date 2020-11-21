@@ -26,12 +26,11 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private OutletObj outletObj;
-    private final LoginObj loginObj;
     RecyclerView mRecyclerView;
     SearchView svNearby;
     TextView icBtBack;
-    public NearbyFragment(LoginObj loginObj, OutletObj outletObj){
-        this.loginObj = loginObj;
+
+    public NearbyFragment(OutletObj outletObj){
         this.outletObj = outletObj;
     }
 
@@ -57,7 +56,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
 
         icBtBack.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                gotoNewTask(new Intent(activity, DashboardActivity.class), loginObj);
+                gotoNewTask(new Intent(activity, DashboardActivity.class));
             }
         });
 

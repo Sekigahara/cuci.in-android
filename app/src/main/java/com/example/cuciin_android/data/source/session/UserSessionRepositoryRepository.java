@@ -7,6 +7,7 @@ import com.example.cuciin_android.data.model.LoginObj;
 import com.google.gson.Gson;
 
 public class UserSessionRepositoryRepository implements SessionRepository<LoginObj> {
+    private static UserSessionRepositoryRepository instance;
     private static String SESSION_USER = "SessionUser";
     private SharedPreferences sharedPref;
 

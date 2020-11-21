@@ -6,4 +6,8 @@ public class UtilsApi {
     public static ApiService getAPIService(){
         return RetrofitClient.getClient(BASE_URL_API).create(ApiService.class);
     }
+
+    public static ApiService getApiService(String GoogleURL){
+        return RetrofitClient.getClient(GoogleURL).create(ApiService.class);
+    }
 }

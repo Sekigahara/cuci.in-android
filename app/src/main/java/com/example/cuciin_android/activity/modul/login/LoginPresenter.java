@@ -1,6 +1,7 @@
 package com.example.cuciin_android.activity.modul.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -8,6 +9,7 @@ import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.data.model.LoginObj;
 import com.example.cuciin_android.data.model.User;
 import com.example.cuciin_android.data.source.session.SessionRepository;
+import com.example.cuciin_android.data.source.util.UtilProvider;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
 
@@ -17,17 +19,19 @@ import retrofit2.Response;
 
 public class LoginPresenter implements LoginContract.Presenter{
     private final LoginContract.View view;
-    private final SessionRepository sessionRepository;
+    private final Context context;
     ApiService mApiService;
 
-    public LoginPresenter(LoginContract.View view, SessionRepository sessionRepository){
+    public LoginPresenter(LoginContract.View view, Context context){
         this.view = view;
-        this.sessionRepository = sessionRepository;
+        this.context = context;
     }
 
     public void start(){
-        if(sessionRepository.getSessionData() != null){
-            //view.gotoDashboard();   //jika sudah login langsung masuk dashboard
+        UtilProvider.initUserSession(this.context);
+
+        if(UtilProvider.getUserSessionUtil().getSession() != null){
+            view.gotoDashboard();   //jika sudah login langsung masuk dashboard
         }
     }
 
@@ -45,10 +49,10 @@ public class LoginPresenter implements LoginContract.Presenter{
                     LoginObj loginObj = response.body();
                     if(loginObj.getSuccess() == true){
                         Toast.makeText(activity, "Login Success", Toast.LENGTH_LONG).show();
-                        sessionRepository.setSessionData(loginObj);
+                        UtilProvider.getUserSessionUtil().setSession(loginObj);
 
                         Intent intent = new Intent(activity, DashboardActivity.class);
-                        intent.putExtra("session", loginObj);
+                        //intent.putExtra("session", loginObj);
 
                         view.gotoNewTask(intent);
                     }else
