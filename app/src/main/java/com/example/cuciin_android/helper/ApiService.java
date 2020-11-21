@@ -30,13 +30,13 @@ public interface ApiService {
                 @Field("confirmation") String confirmation
     );
 
-    @GET("outlet/{id}")
-    Call<DataOutletObj> outletRequest(
-            @Path("id") int id
-    );
+//    @GET("outlet/{id}")
+//    Call<> outletRequest(
+//            @Path("id") int id
+//    );
 
-   @GET("'/laundry/type/{type}")
-   Call<LaundryType> laundryTypeRequest(
-           @Path("type") int type
-    );
+//   @GET("'/laundry/type/{type}")
+//   Call<LaundryType> laundryTypeRequest(
+//           @Path("type") int type
+//    );
 }
