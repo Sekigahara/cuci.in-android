@@ -16,4 +16,12 @@ public class LaundryType {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
 }
