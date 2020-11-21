@@ -5,14 +5,10 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.login.LoginActivity;
 import com.example.cuciin_android.data.model.RegisterObj;
-import com.example.cuciin_android.data.model.UserObj;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
-
-import org.json.JSONObject;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -74,7 +70,7 @@ public class RegisterPresenter implements RegisterContract.Presenter{
                         Toast.makeText(activity, "Register Success", Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(activity, LoginActivity.class);
-                        activity.startActivity(intent);
+                        view.gotoNewTask(intent);
                     }else
                         Toast.makeText(activity, "Username or Email already Exist", Toast.LENGTH_LONG).show();
                 }else

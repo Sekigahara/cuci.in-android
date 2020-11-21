@@ -1,5 +1,7 @@
 package com.example.cuciin_android.data.source.session;
 
+import java.io.Serializable;
+
 public interface SessionRepository<T> {
     public final String SHARED_PREFERENCE_NAME = "SessionSharedPreferences";
 

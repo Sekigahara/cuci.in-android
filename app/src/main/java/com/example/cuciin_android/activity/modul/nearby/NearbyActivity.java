@@ -1,8 +1,11 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
+import com.example.cuciin_android.data.model.LoginObj;
+import com.example.cuciin_android.data.model.OutletObj;
 
 public class NearbyActivity extends BaseFragmentHolderActivity {
     NearbyFragment nearbyFragment;
@@ -14,7 +17,11 @@ public class NearbyActivity extends BaseFragmentHolderActivity {
         ibAccount.setVisibility(View.VISIBLE);
         ibWashmachine.setVisibility(View.VISIBLE);
 
-        nearbyFragment = new NearbyFragment();
+        Bundle extras = getIntent().getExtras();
+        LoginObj loginObj = (LoginObj) extras.getSerializable("session");
+        OutletObj outletObj = (OutletObj) extras.getSerializable("outlet");
+
+        nearbyFragment = new NearbyFragment(loginObj, outletObj);
         setCurrentFragment(nearbyFragment, true);
     }
 
