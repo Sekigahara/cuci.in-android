@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.Transaction;
 import com.example.cuciin_android.utils.RecycleViewAdapterInvoice;
 
 import java.util.ArrayList;
@@ -39,9 +38,9 @@ public class InvoiceFragment extends BaseFragment<InvoiceActivity, InvoiceContra
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        final ArrayList<Transaction> data = mPresenter.getDataset();
-        mAdapter = new RecycleViewAdapterInvoice(data);
-        mRecyclerView.setAdapter(mAdapter);
+        //final ArrayList<Transaction> data = mPresenter.getDataset();
+        //mAdapter = new RecycleViewAdapterInvoice(data);
+        //mRecyclerView.setAdapter(mAdapter);
 
         tvLaundryName = (TextView) fragmentView.findViewById(R.id.textView_laundry_name_fill);
         tvLocation = (TextView) fragmentView.findViewById(R.id.textView_location_fill);

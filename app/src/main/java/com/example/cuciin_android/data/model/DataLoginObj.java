@@ -3,7 +3,9 @@ package com.example.cuciin_android.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataUserObj {
+import java.io.Serializable;
+
+public class DataLoginObj implements Serializable {
 
     @SerializedName("token")
     @Expose
@@ -11,6 +13,11 @@ public class DataUserObj {
     @SerializedName("name")
     @Expose
     private String name;
+
+    public DataLoginObj(String token, String name){
+        this.token = token;
+        this.name = name;
+    }
 
     public String getToken() {
         return token;

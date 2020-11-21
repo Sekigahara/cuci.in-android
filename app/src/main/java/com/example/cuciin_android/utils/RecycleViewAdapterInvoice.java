@@ -3,19 +3,16 @@ package com.example.cuciin_android.utils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
-import com.example.cuciin_android.data.model.Outlet;
-import com.example.cuciin_android.data.model.Transaction;
 
 import java.util.ArrayList;
 
 public class RecycleViewAdapterInvoice extends RecyclerView.Adapter<RecycleViewAdapterInvoice.MyViewHolder>{
-    private static ArrayList<Transaction> mDataset;
+    //private static ArrayList<Transaction> mDataset;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView tvItem;
@@ -36,8 +33,8 @@ public class RecycleViewAdapterInvoice extends RecyclerView.Adapter<RecycleViewA
         }
     }
 
-    public RecycleViewAdapterInvoice(ArrayList<Transaction> myDataset){
-        mDataset = myDataset;
+    public RecycleViewAdapterInvoice(/*ArrayList<Transaction> myDataset */){
+        //mDataset = myDataset;
     }
 
     public RecycleViewAdapterInvoice.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -54,6 +51,6 @@ public class RecycleViewAdapterInvoice extends RecyclerView.Adapter<RecycleViewA
     }
 
     public int getItemCount(){
-        return mDataset.size();
+        return 0;//mDataset.size();
     }
 }

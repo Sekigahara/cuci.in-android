@@ -1,17 +1,20 @@
 package com.example.cuciin_android.helper;
 
+import com.example.cuciin_android.data.model.OutletObj;
 import com.example.cuciin_android.data.model.RegisterObj;
-import com.example.cuciin_android.data.model.UserObj;
+import com.example.cuciin_android.data.model.LoginObj;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ApiService {
     @FormUrlEncoded
     @POST("login")
-    Call<UserObj> loginRequest(
+    Call<LoginObj> loginRequest(
                 @Field("username") String username,
                 @Field("password") String password
     );
@@ -25,5 +28,10 @@ public interface ApiService {
                 @Field("phone") String phone,
                 @Field("password") String password,
                 @Field("confirmation") String confirmation
+    );
+
+    @GET("outlet")
+    Call<OutletObj> getOutlet(
+                @Header("Authorization") String token
     );
 }
