@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/ivLaundryPhoto"
             android:layout_width="71dp"
-            android:layout_height="103dp"
+            android:layout_height="81dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
@@ -44,33 +44,18 @@
                 android:text="Laundry Distance"
                 android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/tvOperationalHoursText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Operational Hours : "
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/tvOperationalHours"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="xx:xx - xx:xx"
-                android:textSize="12sp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btStatus"
                     android:layout_width="74dp"
-                    android:layout_height="27dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_status"
                     android:text="Open"
                     android:textColor="?attr/colorToolbar" />
@@ -80,15 +65,15 @@
                     android:layout_width="33dp"
                     android:layout_height="38dp"
                     android:layout_marginLeft="10dp"
-
-                    app:srcCompat="@mipmap/ic_rating_foreground" />
+                    android:layout_marginTop="5dp"
+                    android:background="@mipmap/ic_rating_foreground" />
 
                 <TextView
                     android:id="@+id/tvRating"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:text="3.8" />
             </LinearLayout>

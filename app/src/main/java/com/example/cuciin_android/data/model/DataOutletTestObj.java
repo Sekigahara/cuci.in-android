@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class DataOutletObj implements Serializable {
+public class DataOutletTestObj implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;

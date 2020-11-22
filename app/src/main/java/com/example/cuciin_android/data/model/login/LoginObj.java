@@ -1,21 +1,27 @@
-package com.example.cuciin_android.data.model;
+package com.example.cuciin_android.data.model.login;
 
-import java.io.Serializable;
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OutletObj implements Serializable {
+import java.io.Serializable;
+
+public class LoginObj implements Serializable{
 
     @SerializedName("success")
     @Expose
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private List<DataOutletObj> data = null;
+    private DataLoginObj data;
     @SerializedName("message")
     @Expose
     private String message;
+
+    public LoginObj(Boolean success, DataLoginObj data, String message){
+        this.success = success;
+        this.data = data;
+        this.message = message;
+    }
 
     public Boolean getSuccess() {
         return success;
@@ -25,11 +31,11 @@ public class OutletObj implements Serializable {
         this.success = success;
     }
 
-    public List<DataOutletObj> getData() {
+    public DataLoginObj getDataObj() {
         return data;
     }
 
-    public void setData(List<DataOutletObj> data) {
+    public void setDataObj(DataLoginObj data) {
         this.data = data;
     }
 
@@ -40,5 +46,4 @@ public class OutletObj implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
-
 }

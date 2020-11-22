@@ -16,9 +16,11 @@ import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.order.OrderActivity;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.DataOutletObj;
-import com.example.cuciin_android.data.model.LoginObj;
-import com.example.cuciin_android.data.model.OutletObj;
+import com.example.cuciin_android.data.model.DataOutletTestObj;
+import com.example.cuciin_android.data.model.login.LoginObj;
+import com.example.cuciin_android.data.model.OutletTestObj;
+import com.example.cuciin_android.data.model.outlet.DataOutletObj;
+import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
 
 import java.util.List;
@@ -26,13 +28,17 @@ import java.util.List;
 public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.Presenter> implements NearbyContract.View {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private OutletTestObj outletTestObj;
     private OutletObj outletObj;
-    private final LoginObj loginObj;
     RecyclerView mRecyclerView;
     SearchView svNearby;
     TextView icBtBack;
-    public NearbyFragment(LoginObj loginObj, OutletObj outletObj){
-        this.loginObj = loginObj;
+
+    public NearbyFragment(OutletTestObj outletTestObj){
+        this.outletTestObj = outletTestObj;
+    }
+
+    public NearbyFragment(OutletObj outletObj){
         this.outletObj = outletObj;
     }
 
@@ -47,29 +53,32 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //String queryLink = mPresenter.getGoogleQueryLink("-7.313053, 112.717466", "1500", "AIzaSyD0_sZhy7fJoeUcIGTmkTZbl5FNxYr2N-o");
-
-        final List<DataOutletObj> listOutlet = outletObj.getData();
+        final List<DataOutletObj> listOutlet = outletObj.getResults();
         mAdapter = new RecycleViewAdapterNearby(listOutlet);
         mRecyclerView.setAdapter(mAdapter);
+        //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
+        //mAdapter = new RecycleViewAdapterNearby(listOutlet);
+        //mRecyclerView.setAdapter(mAdapter);
 
         svNearby = fragmentView.findViewById(R.id.svNearby);
         icBtBack = fragmentView.findViewById(R.id.icBtBack);
 
         icBtBack.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                gotoNewTask(new Intent(activity, DashboardActivity.class), loginObj);
+                gotoNewTask(new Intent(activity, DashboardActivity.class));
             }
         });
 
+        /*
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
             public void onItemClick(int position, View view) {
-                int id = listOutlet.get(position).getId();
+                //int id = listOutlet.get(position).getId();
                 Log.d("Dashboard", ">>>>" + position);
                 mPresenter.orderItem(activity, loginObj, listOutlet.get(id));
             }
         });
+        */
         return fragmentView;
     }
 

@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.example.cuciin_android.activity.modul.login.LoginActivity;
-import com.example.cuciin_android.data.model.RegisterObj;
+import com.example.cuciin_android.data.model.register.RegisterObj;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
 

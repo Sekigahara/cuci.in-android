@@ -1,12 +1,8 @@
 package com.example.cuciin_android.activity.modul.dashboard;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
-import com.example.cuciin_android.data.model.DataLoginObj;
-import com.example.cuciin_android.data.model.LoginObj;
-import com.example.cuciin_android.data.source.session.UserSessionRepositoryRepository;
 
 public class DashboardActivity extends BaseFragmentHolderActivity {
     DashboardFragment dashboardFragment;
@@ -21,10 +17,7 @@ public class DashboardActivity extends BaseFragmentHolderActivity {
         ibAccount.setVisibility(View.VISIBLE);
         ibWashmachine.setVisibility(View.VISIBLE);
 
-        Bundle extras = getIntent().getExtras();
-        LoginObj loginObj = (LoginObj) extras.getSerializable("session");
-
-        dashboardFragment = new DashboardFragment(loginObj);
+        dashboardFragment = new DashboardFragment();
         setCurrentFragment(dashboardFragment, true);
     }
 
