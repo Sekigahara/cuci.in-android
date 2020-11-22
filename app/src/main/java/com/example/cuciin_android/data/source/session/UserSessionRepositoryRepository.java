@@ -3,7 +3,7 @@ package com.example.cuciin_android.data.source.session;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.cuciin_android.data.model.LoginObj;
+import com.example.cuciin_android.data.model.login.LoginObj;
 import com.google.gson.Gson;
 
 public class UserSessionRepositoryRepository implements SessionRepository<LoginObj> {

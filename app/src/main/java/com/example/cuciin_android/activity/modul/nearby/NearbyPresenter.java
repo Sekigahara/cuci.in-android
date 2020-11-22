@@ -1,23 +1,22 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
-import android.os.AsyncTask;
-import android.os.NetworkOnMainThreadException;
-import android.util.Log;
+import android.app.Activity;
+import android.content.Intent;
 import android.widget.Toast;
 
-import com.example.cuciin_android.data.model.DataOutletObj;
+import com.example.cuciin_android.data.model.outlet.OutletObj;
+import com.example.cuciin_android.data.source.util.UtilProvider;
+import com.example.cuciin_android.helper.ApiGoogleService;
+import com.example.cuciin_android.helper.ApiService;
+import com.example.cuciin_android.helper.UtilsApi;
 
-import org.json.JSONObject;
-
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
-import java.io.IOException;
-import org.json.JSONException;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NearbyPresenter  implements NearbyContract.Presenter {
     private final NearbyContract.View view;
+    ApiGoogleService mApiService;
 
     public NearbyPresenter(NearbyContract.View view){
         this.view = view;
@@ -25,9 +24,5 @@ public class NearbyPresenter  implements NearbyContract.Presenter {
 
     public void start(){
 
-    }
-
-    public String getGoogleQueryLink(String location, String radius, String API_KEY) {
-        return "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=" + radius + "&type=laundry&key=" + API_KEY;
     }
 }

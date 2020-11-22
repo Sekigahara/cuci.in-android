@@ -1,8 +1,8 @@
 package com.example.cuciin_android.helper;
 
-import com.example.cuciin_android.data.model.OutletObj;
-import com.example.cuciin_android.data.model.RegisterObj;
-import com.example.cuciin_android.data.model.LoginObj;
+import com.example.cuciin_android.data.model.OutletTestObj;
+import com.example.cuciin_android.data.model.register.RegisterObj;
+import com.example.cuciin_android.data.model.login.LoginObj;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -31,7 +31,7 @@ public interface ApiService {
     );
 
     @GET("outlet")
-    Call<OutletObj> getOutlet(
+    Call<OutletTestObj> getOutlet(
                 @Header("Authorization") String token
     );
 }
