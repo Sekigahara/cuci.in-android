@@ -11,6 +11,7 @@
     <color name="black">#000000</color>
 
     <color name="green_open">#17D22A</color>
+    <color name="red_close">#ff0000</color>
     <color name="grey">#D5D5D5</color>
     <color name="service_list_text_color">#80B5FF</color>
     <color name="dark_grey">#373A40</color>

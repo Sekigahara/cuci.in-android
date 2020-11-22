@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
-import com.example.cuciin_android.data.model.LoginObj;
-import com.example.cuciin_android.data.model.OutletObj;
+import com.example.cuciin_android.data.model.OutletTestObj;
+import com.example.cuciin_android.data.model.outlet.OutletObj;
 
 public class NearbyActivity extends BaseFragmentHolderActivity {
     NearbyFragment nearbyFragment;
@@ -18,10 +18,11 @@ public class NearbyActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.VISIBLE);
 
         Bundle extras = getIntent().getExtras();
-        LoginObj loginObj = (LoginObj) extras.getSerializable("session");
+        //OutletTestObj outletTestObj = (OutletTestObj) extras.getSerializable("outlet");
         OutletObj outletObj = (OutletObj) extras.getSerializable("outlet");
 
-        nearbyFragment = new NearbyFragment(loginObj, outletObj);
+        //nearbyFragment = new NearbyFragment(outletTestObj);
+        nearbyFragment = new NearbyFragment(outletObj);
         setCurrentFragment(nearbyFragment, true);
     }
 
