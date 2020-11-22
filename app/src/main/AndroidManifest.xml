@@ -11,21 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        
         <activity android:name=".activity.modul.landing.LandingActivity">
-
-        </activity>
-<!--        <activity android:name=".activity.modul.login.LoginActivity"></activity>-->
-<!--        <activity android:name=".activity.modul.register.RegisterActivity"></activity>-->
-<!--        <activity android:name=".activity.modul.dashboard.DashboardActivity"></activity>-->
-<!--        <activity android:name=".activity.modul.invoice.InvoiceActivity"></activity>-->
-<!--        <activity android:name=".activity.modul.nearby.NearbyActivity"></activity>-->
-<!--        <activity android:name=".activity.modul.orderList.OrderListActivity"></activity>-->
-        <activity android:name=".activity.modul.order.OrderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.modul.login.LoginActivity"></activity>
+        <activity android:name=".activity.modul.register.RegisterActivity"></activity>
+        <activity android:name=".activity.modul.dashboard.DashboardActivity"></activity>
+        <activity android:name=".activity.modul.invoice.InvoiceActivity"></activity>
+        <activity android:name=".activity.modul.nearby.NearbyActivity"></activity>
+        <activity android:name=".activity.modul.orderList.OrderListActivity"></activity>
+        <activity android:name=".activity.modul.order.OrderActivity"></activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
