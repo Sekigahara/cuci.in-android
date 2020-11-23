@@ -1,4 +1,4 @@
-package com.example.cuciin_android.data.source.util;
+package com.example.cuciin_android.utils.utility;
 
 import com.example.cuciin_android.data.model.outlet.Location;
 
