@@ -1,6 +1,7 @@
 package com.example.cuciin_android.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
+import com.example.cuciin_android.activity.modul.orderList.OrderListActivity;
 
 
 public abstract class BaseFragmentHolderActivity extends BaseActivity {
@@ -34,6 +37,26 @@ public abstract class BaseFragmentHolderActivity extends BaseActivity {
         rlActivityFragmentHolder = (RelativeLayout) findViewById(R.id.rlActivityFragmentHolder);
 
         ibCart.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getBaseContext(), OrderListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibHome.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibWashmachine.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+
+            }
+        });
+
+        ibAccount.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
 
             }

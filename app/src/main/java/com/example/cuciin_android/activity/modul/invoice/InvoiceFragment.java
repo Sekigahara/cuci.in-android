@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.utils.RecycleViewAdapterInvoice;
-
-import java.util.ArrayList;
 
 public class InvoiceFragment extends BaseFragment<InvoiceActivity, InvoiceContract.Presenter> implements InvoiceContract.View {
     private RecyclerView.Adapter mAdapter;

@@ -1,4 +1,4 @@
-package com.example.cuciin_android.data.source.session;
+package com.example.cuciin_android.utils.session;
 
 import android.content.Context;
 import android.content.SharedPreferences;

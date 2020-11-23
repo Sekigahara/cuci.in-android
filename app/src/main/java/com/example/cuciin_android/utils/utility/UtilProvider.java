@@ -1,9 +1,9 @@
-package com.example.cuciin_android.data.source.util;
+package com.example.cuciin_android.utils.utility;
 
 import android.content.Context;
 
 import com.example.cuciin_android.data.model.outlet.Location;
-import com.example.cuciin_android.data.source.session.UserSessionRepositoryRepository;
+import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 
 public class UtilProvider {
     private static UserSessionUtil userSessionUtil;

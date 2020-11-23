@@ -8,13 +8,13 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/bottomToolbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?attr/colorToolbar"
         android:elevation="100dp"
         android:theme="?attr/actionBarTheme"
         app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp" >
+        app:contentInsetStart="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,32 +25,33 @@
                 android:id="@+id/ibHome"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="13dp"
                 android:layout_marginLeft="45dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:background="@drawable/ic_home_icon" />
 
             <ImageButton
                 android:id="@+id/ibCart"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="13dp"
                 android:layout_marginLeft="50dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/ic_cart_icon" />
 
             <ImageButton
                 android:id="@+id/ibWashmachine"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="13dp"
                 android:layout_marginLeft="55dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/ic_washmachine_icon" />
 
             <ImageButton
                 android:id="@+id/ibAccount"
                 android:layout_width="42dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="13dp"
                 android:layout_marginLeft="45dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/ic_account_icon" />
         </LinearLayout>
 

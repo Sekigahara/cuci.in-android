@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.utils.RecycleViewAdapterOrderList;
-
-import java.util.ArrayList;
 
 public class OrderListFragment extends BaseFragment<OrderListActivity, OrderListContract.Presenter> implements OrderListContract.View {
     private RecyclerView.Adapter mAdapter;

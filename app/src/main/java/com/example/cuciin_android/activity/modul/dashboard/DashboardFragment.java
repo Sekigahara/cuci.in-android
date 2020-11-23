@@ -1,16 +1,22 @@
 package com.example.cuciin_android.activity.modul.dashboard;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.telephony.CarrierConfigManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.source.session.UserSessionRepositoryRepository;
-import com.example.cuciin_android.data.source.util.UtilProvider;
+import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
+import com.example.cuciin_android.utils.utility.UtilProvider;
 
 public class DashboardFragment extends BaseFragment<DashboardActivity, DashboardContract.Presenter> implements DashboardContract.View {
     UserSessionRepositoryRepository userSession;
@@ -27,18 +33,32 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
         mPresenter = new DashboardPresenter(this);
         mPresenter.start();
 
-        final Double lat = -7.313053;
-        final Double lng = 112.717466;
-        UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
         ivNearby = fragmentView.findViewById(R.id.imageView_Nearby);
-        ivNearby.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                //String queryURL = mPresenter.getGoogleQueryLink("-7.313053, 112.717466", "1500", "AIzaSyD0_sZhy7fJoeUcIGTmkTZbl5FNxYr2N-o");
-                mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
-                //mPresenter.getOutletData(activity, getContext());
-                //gotoNewTask(new Intent(activity, NearbyActivity.class));
-            }
-        });
+        if(statusOfGPS == true){
+            LocationTrack locationTrack = new LocationTrack(activity);
+
+            final Double lat = locationTrack.getLatitude();
+            final Double lng = locationTrack.getLongitude();
+            UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
+            Toast.makeText(activity, "Lat : " + lat.toString() + " lng : " + lng.toString(), Toast.LENGTH_LONG).show();
+            ivNearby.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View view){
+                    mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
+                }
+            });
+        }else{
+            Toast.makeText(getActivity(), "Enable Your GPS", Toast.LENGTH_LONG).show();
+
+            ivNearby.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View view){
+                    gotoNewTask(new Intent(activity, DashboardActivity.class));
+                }
+            });
+        }
+
 
         /*
         ivLogout = fragmentView.findViewById(R.id.imageView_log);
