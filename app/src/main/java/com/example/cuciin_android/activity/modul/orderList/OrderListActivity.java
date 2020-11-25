@@ -1,8 +1,10 @@
 package com.example.cuciin_android.activity.modul.orderList;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
+import com.example.cuciin_android.data.model.Transaction;
 
 public class OrderListActivity extends BaseFragmentHolderActivity {
     OrderListFragment orderListFragment;
@@ -14,7 +16,10 @@ public class OrderListActivity extends BaseFragmentHolderActivity {
         ibAccount.setVisibility(View.VISIBLE);
         ibWashmachine.setVisibility(View.VISIBLE);
 
-        orderListFragment = new OrderListFragment();
+        Bundle extras = getIntent().getExtras();
+        Transaction transaction = (Transaction) extras.getSerializable("transaction");
+
+        orderListFragment = new OrderListFragment(transaction);
         setCurrentFragment(orderListFragment, true);
     }
 

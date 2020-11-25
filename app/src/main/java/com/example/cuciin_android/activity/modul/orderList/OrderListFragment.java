@@ -1,6 +1,8 @@
 package com.example.cuciin_android.activity.modul.orderList;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
+import com.example.cuciin_android.data.model.Transaction;
+import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
 import com.example.cuciin_android.utils.RecycleViewAdapterOrderList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderListFragment extends BaseFragment<OrderListActivity, OrderListContract.Presenter> implements OrderListContract.View {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
-    public OrderListFragment(){
+    Transaction transaction;
 
+    public OrderListFragment(Transaction transaction){
+        this.transaction = transaction;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -33,29 +40,35 @@ public class OrderListFragment extends BaseFragment<OrderListActivity, OrderList
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //final ArrayList<Transaction> data = mPresenter.getDataset();
-        //mAdapter = new RecycleViewAdapterOrderList(data);
-        //mRecyclerView.setAdapter(mAdapter);
+        final List<Transaction.Data> data = transaction.getData();
+        mAdapter = new RecycleViewAdapterOrderList(data);
+        mRecyclerView.setAdapter(mAdapter);
 
+//        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
+//            @Override
+//            public void onItemClick(int position, View view) {
+//                String id = data.get(position).getId();
+//                Log.d("Dashboard", ">>>>" + position);
+//                goToDetailTransaksi(id);
+//            }
+//        });
 
-        /*
-        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View view) {
-                String id = data.get(position).getId();
-                Log.d("Dashboard", ">>>>" + position);
-                goToSchedule(id);
-            }
-        });
-        */
         return fragmentView;
     }
 
-    public void gotoNewTask(){
+    public void gotoNewTask(Intent intent){
 
+    }
+
+    public void goToDetailTransaksi(int id) {
     }
 
     public void setPresenter(OrderListContract.Presenter presenter){
         mPresenter = presenter;
+    }
+
+    @Override
+    public void gotoNewTask() {
+
     }
 }

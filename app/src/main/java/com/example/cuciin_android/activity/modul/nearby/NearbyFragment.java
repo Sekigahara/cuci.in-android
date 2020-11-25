@@ -1,5 +1,6 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,16 +70,14 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
             }
         });
 
-        /*
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
             public void onItemClick(int position, View view) {
                 //int id = listOutlet.get(position).getId();
-                Log.d("Dashboard", ">>>>" + position);
-                mPresenter.orderItem(activity, loginObj, listOutlet.get(id));
+                Log.d("Dashboard", " >>>> " + position);
+                mPresenter.orderItem(activity, listOutlet.get(position));
             }
         });
-        */
         return fragmentView;
     }
 

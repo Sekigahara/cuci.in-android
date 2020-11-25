@@ -10,6 +10,5 @@ public class OrderListPresenter implements OrderListContract.Presenter{
     }
 
     public void start(){
-
     }
 }
