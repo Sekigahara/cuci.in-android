@@ -3,7 +3,6 @@ package com.example.cuciin_android.activity.modul.nearby;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +16,11 @@ import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.order.OrderActivity;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.DataOutletTestObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.OutletTestObj;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
-import com.example.cuciin_android.utils.RecycleViewAdapterNearby;
+import com.example.cuciin_android.utils.recycler.RecycleViewAdapterNearby;
 
 import java.util.List;
 
@@ -54,8 +52,8 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        final List<DataOutletObj> listOutlet = outletObj.getResults();
-        mAdapter = new RecycleViewAdapterNearby(listOutlet);
+        final List<DataOutletObj> listOutlet =outletObj.getResults();
+        mAdapter = new RecycleViewAdapterNearby(listOutlet, getResources());
         mRecyclerView.setAdapter(mAdapter);
         //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
         //mAdapter = new RecycleViewAdapterNearby(listOutlet);

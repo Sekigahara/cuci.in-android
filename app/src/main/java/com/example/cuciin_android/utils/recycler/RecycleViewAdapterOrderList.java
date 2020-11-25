@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleViewAdapterOrderList.MyViewHolder>{
-    private static List<Transaction.Data> mDataset;
+    //private static ArrayList<Transaction> mDataset;
     private static RecycleViewAdapterOrderList.MyClickListener myClickListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -36,8 +36,8 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
         }
     }
 
-    public RecycleViewAdapterOrderList(List<Transaction.Data> myDataset){
-        mDataset = myDataset;
+    public RecycleViewAdapterOrderList(/*ArrayList<Transaction> myDataset*/){
+        //mDataset = myDataset;
     }
 
     public RecycleViewAdapterOrderList.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -48,9 +48,9 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
     }
 
     public void onBindViewHolder(RecycleViewAdapterOrderList.MyViewHolder holder, int position){
-        holder.tvOrderNumber.setText(mDataset.get(position).getPo_number());
-        holder.tvLaundryName.setText(mDataset.get(position).getOutlet().getName());
-        holder.tvPrice.setText(mDataset.get(position).getPrice());
+        //holder.ivListImage.setImageResource(mDataset.get(position).getImage());
+        //holder.tvTitle.setText(mDataset.get(position).getTitle());
+        //holder.tvDescription.setText(mDataset.get(position).getDescription());
     }
 
     public int getItemCount(){

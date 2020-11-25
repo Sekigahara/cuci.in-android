@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.User;
-import com.example.cuciin_android.data.source.util.UtilProvider;
+import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
 

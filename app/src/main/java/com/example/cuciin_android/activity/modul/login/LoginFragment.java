@@ -16,7 +16,6 @@ import com.example.cuciin_android.activity.modul.landing.LandingActivity;
 import com.example.cuciin_android.activity.modul.register.RegisterActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.User;
-import com.example.cuciin_android.data.source.session.UserSessionRepositoryRepository;
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements LoginContract.View {
     EditText etUsername;

@@ -1,7 +1,7 @@
-package com.example.cuciin_android.data.source.util;
+package com.example.cuciin_android.utils.utility;
 
 import com.example.cuciin_android.data.model.login.LoginObj;
-import com.example.cuciin_android.data.source.session.UserSessionRepositoryRepository;
+import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 
 public class UserSessionUtil {
     private UserSessionRepositoryRepository userSessionRepositoryRepository;

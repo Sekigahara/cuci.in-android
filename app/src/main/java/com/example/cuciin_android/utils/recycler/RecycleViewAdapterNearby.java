@@ -1,5 +1,7 @@
-package com.example.cuciin_android.utils;
+package com.example.cuciin_android.utils.recycler;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +12,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
-import com.example.cuciin_android.data.model.DataOutletTestObj;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
-import com.example.cuciin_android.data.model.outlet.Location;
-import com.example.cuciin_android.data.source.util.LocationUtil;
-import com.example.cuciin_android.data.source.util.UtilProvider;
-import com.example.cuciin_android.helper.UtilsApi;
+import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 import com.squareup.picasso.Picasso;
@@ -25,13 +23,12 @@ import java.util.List;
 public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAdapterNearby.MyViewHolder>{
     private static List<DataOutletObj> mDataset;
     private static MyClickListener myClickListener;
+    private Resources resources;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView ivLaundryPhoto;
         TextView tvLaundryName;
         TextView tvLaundryDistance;
-        TextView tvOperationalHoursText;
-        TextView tvOperationalHours;
         TextView tvRating;
         Button btStatus;
         public MyViewHolder(View itemView){
@@ -50,8 +47,9 @@ public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAd
         }
     }
 
-    public RecycleViewAdapterNearby(List<DataOutletObj> myDataset){
+    public RecycleViewAdapterNearby(List<DataOutletObj> myDataset, Resources resources){
         mDataset = myDataset;
+        this.resources = resources;
     }
 
     public RecycleViewAdapterNearby.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -72,7 +70,7 @@ public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAd
         LatLng to  = new LatLng(toLat, toLng);
 
         Double distance = countDistance(from, to);
-        holder.tvLaundryDistance.setText(String.format("%.2f", distance) + " KM");
+        holder.tvLaundryDistance.setText(String.format("%.2f", distance) + " KM From Your Location");
 
         //Set Laundry Name
         holder.tvLaundryName.setText(mDataset.get(position).getName());
@@ -94,17 +92,18 @@ public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAd
         }
 
         //Set Status Open
-
+        Drawable greenButton = resources.getDrawable(R.drawable.custom_status);
+        Drawable redButton = resources.getDrawable(R.drawable.custom_status_red);
         if(mDataset.get(position).getOpeningHours() == null){
             holder.btStatus.setText("Close");
-            holder.btStatus.setBackgroundColor(R.attr.closeStatusColor);
+            holder.btStatus.setBackground(redButton);
         }else {
             if(mDataset.get(position).getOpeningHours().getOpenNow() == true){
                 holder.btStatus.setText("Open");
-                holder.btStatus.setBackgroundColor(R.attr.openStatusColor);
+                holder.btStatus.setBackground(greenButton);
             }else{
                 holder.btStatus.setText("Close");
-                holder.btStatus.setBackgroundColor(R.attr.closeStatusColor);
+                holder.btStatus.setBackground(redButton);
             }
         }
     }
