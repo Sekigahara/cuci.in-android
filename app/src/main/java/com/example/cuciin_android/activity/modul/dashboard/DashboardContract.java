@@ -14,6 +14,6 @@ public interface DashboardContract {
     }
 
     interface Presenter extends BasePresenter {
-        void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
+
     }
 }
