@@ -25,6 +25,7 @@
         <activity android:name=".activity.modul.invoice.InvoiceActivity"></activity>
         <activity android:name=".activity.modul.nearby.NearbyActivity"></activity>
         <activity android:name=".activity.modul.orderList.OrderListActivity"></activity>
+        <activity android:name=".activity.modul.detail_transaction.DetailActivity"></activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

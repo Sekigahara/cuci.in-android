@@ -36,14 +36,14 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-        ivNearby = fragmentView.findViewById(R.id.imageView_Nearby);
+        ivNearby = fragmentView.findViewById(R.id.ivNearby);
         if(statusOfGPS == true){
             LocationTrack locationTrack = new LocationTrack(activity);
 
             final Double lat = locationTrack.getLatitude();
             final Double lng = locationTrack.getLongitude();
             UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
-            Toast.makeText(activity, "Lat : " + lat.toString() + " lng : " + lng.toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity, "Lat : " + lat.toString() + " lng : " + lng.toString(), Toast.LENGTH_LONG).show();
             ivNearby.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View view){
                     mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
