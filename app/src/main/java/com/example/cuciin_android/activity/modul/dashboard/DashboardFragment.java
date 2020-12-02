@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.nearby.NearbyActivity;
+import com.example.cuciin_android.activity.modul.nearby.NearbyFragment;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 import com.example.cuciin_android.utils.utility.UtilProvider;
@@ -37,37 +39,11 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
         boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         ivNearby = fragmentView.findViewById(R.id.ivNearby);
-        if(statusOfGPS == true){
-            LocationTrack locationTrack = new LocationTrack(activity);
-
-            final Double lat = locationTrack.getLatitude();
-            final Double lng = locationTrack.getLongitude();
-            UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
-            //Toast.makeText(activity, "Lat : " + lat.toString() + " lng : " + lng.toString(), Toast.LENGTH_LONG).show();
-            ivNearby.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View view){
-                    mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
-                }
-            });
-        }else{
-            Toast.makeText(getActivity(), "Enable Your GPS", Toast.LENGTH_LONG).show();
-
-            ivNearby.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View view){
-                    gotoNewTask(new Intent(activity, DashboardActivity.class));
-                }
-            });
-        }
-
-
-        /*
-        ivLogout = fragmentView.findViewById(R.id.imageView_log);
-        ivLogout.setOnClickListener(new View.OnClickListener(){
+        ivNearby.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                getContext().getSharedPreferences("SessionSharedPreferences", Context.MODE_PRIVATE).edit().clear().apply();
+                gotoNewTask(new Intent(activity, NearbyActivity.class));
             }
         });
-         */
 
         return fragmentView;
     }
