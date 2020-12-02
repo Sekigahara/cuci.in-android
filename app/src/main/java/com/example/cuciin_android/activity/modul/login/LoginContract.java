@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.example.cuciin_android.base.BasePresenter;
 import com.example.cuciin_android.base.BaseView;
 import com.example.cuciin_android.data.model.User;
+import com.example.cuciin_android.data.model.user.UserObj;
 
 public interface LoginContract {
     interface View extends BaseView<Presenter> {
