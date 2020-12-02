@@ -47,8 +47,7 @@ public class RegisterPresenter implements RegisterContract.Presenter{
     }
     public void validateRegister(final Activity activity, String full_name, String username, String email,
                                  String phone, String password, String confirm){
-
-        mApiService = UtilsApi.getAPIService();
+        mApiService = UtilsApi.getAPIServiceLocal();
         Call<RegisterObj> call = mApiService.registerRequest(full_name, username, email, phone, password, confirm);
         call.enqueue(new Callback<RegisterObj>() {
             @Override
@@ -88,6 +87,7 @@ public class RegisterPresenter implements RegisterContract.Presenter{
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
+
         return matcher.matches();
     }
 }

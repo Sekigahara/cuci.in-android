@@ -20,11 +20,10 @@ public class OrderActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.GONE);
 
         Bundle extras = getIntent().getExtras();
-        DataOutletObj dataOutletObj = (DataOutletObj) extras.getSerializable("dataOutletObj");
+        DataOutletObj dataOutletObj = (DataOutletObj) extras.getSerializable("outletObj");
         LaundryType laundryType = (LaundryType) extras.getSerializable("laundryType");
-        LoginObj loginObj = (LoginObj) extras.getSerializable("session");
 
-        orderFragment = new OrderFragment(dataOutletObj, laundryType, loginObj);
+        orderFragment = new OrderFragment(dataOutletObj, laundryType);
         setCurrentFragment(orderFragment, true);
     }
 

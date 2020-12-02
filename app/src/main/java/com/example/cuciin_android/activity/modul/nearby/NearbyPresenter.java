@@ -7,18 +7,25 @@ import android.widget.Toast;
 
 import com.example.cuciin_android.activity.modul.order.OrderActivity;
 import com.example.cuciin_android.data.model.LaundryType;
+import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.helper.ApiGoogleService;
+import com.example.cuciin_android.helper.ApiService;
+import com.example.cuciin_android.helper.UtilsApi;
+import com.example.cuciin_android.utils.utility.UserSessionUtil;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class NearbyPresenter  implements NearbyContract.Presenter {
     private final NearbyContract.View view;
-    ApiGoogleService mApiService;
     ApiService mApiServiceLaundry;
 
     public NearbyPresenter(NearbyContract.View view){
@@ -69,19 +76,12 @@ public class NearbyPresenter  implements NearbyContract.Presenter {
 
     @Override
     public void orderItem(final Activity activity, final DataOutletObj outletObj) {
-        mApiServiceLaundry = UtilsApi.getAPIService();
-        Call<LaundryType> call = mApiServiceLaundry.getLaundryTypeAll();
+        LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
+        mApiServiceLaundry = UtilsApi.getAPIServiceLocal();
+        Call<LaundryType> call = mApiServiceLaundry.getLaundryTypeAll("Bearer " + loginObj.getDataObj().getToken());
         call.enqueue(new Callback<LaundryType>() {
             @Override
             public void onResponse(Call<LaundryType> call, Response<LaundryType> response) {
-                try {
-                    if(response.body()!=null)
-                        Toast.makeText(activity," response message "+ response.body().toString(),Toast.LENGTH_LONG).show();
-                    if(response.errorBody()!=null)
-                        Toast.makeText(activity," response message "+response.errorBody().string(),Toast.LENGTH_LONG).show();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
                 if(response.isSuccessful() == true){
                     LaundryType laundryTypeAll = response.body();
                     if(laundryTypeAll.getSuccess() == true){

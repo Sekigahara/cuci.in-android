@@ -1,5 +1,6 @@
 package com.example.cuciin_android.utils;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,9 @@ public class RecycleViewAdapterLaundryType extends RecyclerView.Adapter<RecycleV
     }
 
     private void setDefaultAmountData() {
-        for(int i = 0; i < mDataset.size(); i++)
+        for(int i = 0; i < mDataset.size(); i++) {
             amountItem[i] = 0;
+        }
     }
 
     public void addAmount(int position) {
@@ -64,7 +66,7 @@ public class RecycleViewAdapterLaundryType extends RecyclerView.Adapter<RecycleV
 
     public void onBindViewHolder(MyViewHolder holder, int position){
         holder.tvLaundryTitle.setText(mDataset.get(position).getName());
-        holder.tvLaundryAmount.setText(amountItem[position]);
+        holder.tvLaundryAmount.setText(String.valueOf(amountItem[position]));
         //holder.ivListImage.setImageResource(mDataset.get(position).getImage());
         //holder.tvTitle.setText(mDataset.get(position).getTitle());
         //holder.tvDescription.setText(mDataset.get(position).getDescription());
@@ -76,6 +78,10 @@ public class RecycleViewAdapterLaundryType extends RecyclerView.Adapter<RecycleV
 
     public void setOnItemClickListener(MyClickListener myClickListener){
         this.myClickListener = myClickListener;
+    }
+
+    public int[] getAmount(){
+        return amountItem;
     }
 
     public interface MyClickListener{

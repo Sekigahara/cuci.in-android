@@ -19,9 +19,9 @@ public class OrderListActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.VISIBLE);
 
         Bundle extras = getIntent().getExtras();
-        Transaction transaction = (Transaction) extras.getSerializable("transaction");
+        //Transaction transaction = (Transaction) extras.getSerializable("transaction");
 
-        orderListFragment = new OrderListFragment(transaction);
+        orderListFragment = new OrderListFragment();
         setCurrentFragment(orderListFragment, true);
     }
 

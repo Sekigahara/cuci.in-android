@@ -3,7 +3,9 @@ package com.example.cuciin_android.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataLaundryType {
+import java.io.Serializable;
+
+public class DataLaundryType implements Serializable {
     @Expose
     @SerializedName("updated_at")
     private String updated_at;
