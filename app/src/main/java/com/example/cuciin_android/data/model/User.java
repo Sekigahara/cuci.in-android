@@ -1,5 +1,6 @@
 package com.example.cuciin_android.data.model;
 
+
 import android.text.TextUtils;
 
 public class User {

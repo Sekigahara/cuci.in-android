@@ -15,10 +15,12 @@ public interface NearbyContract {
     interface View extends BaseView<Presenter> {
         void gotoNewTask(Intent intent);
         void gotoNewTask(Intent intent, LoginObj loginObj);
+        void viewNearby(OutletObj outletObj);
     }
 
     interface Presenter extends BasePresenter {
         List<DataOutletObj> sortByAscending(List<DataOutletObj> data);
         void orderItem(Activity activity, DataOutletObj outletObj);
+        void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
     }
 }

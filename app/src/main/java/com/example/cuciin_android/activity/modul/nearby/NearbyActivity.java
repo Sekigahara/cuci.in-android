@@ -19,10 +19,10 @@ public class NearbyActivity extends BaseFragmentHolderActivity {
 
         Bundle extras = getIntent().getExtras();
         //OutletTestObj outletTestObj = (OutletTestObj) extras.getSerializable("outlet");
-        OutletObj outletObj = (OutletObj) extras.getSerializable("outlet");
+        //OutletObj outletObj = (OutletObj) extras.getSerializable("outlet");
 
         //nearbyFragment = new NearbyFragment(outletTestObj);
-        nearbyFragment = new NearbyFragment(outletObj);
+        nearbyFragment = new NearbyFragment();
         setCurrentFragment(nearbyFragment, true);
     }
 

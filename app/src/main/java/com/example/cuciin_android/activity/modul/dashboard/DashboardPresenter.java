@@ -20,8 +20,7 @@ import retrofit2.Response;
 
 public class DashboardPresenter implements DashboardContract.Presenter{
     private final DashboardContract.View view;
-    ApiService mApiService;
-    ApiGoogleService mGoogleApiService;
+
 
     public DashboardPresenter(DashboardContract.View view){
         this.view = view;

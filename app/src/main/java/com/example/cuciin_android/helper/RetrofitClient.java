@@ -15,6 +15,9 @@ public class RetrofitClient {
         Log.d("Retrofit URL", baseUrl);
         if(!baseUrl.equals(baseUrlRetrofit)) {
             baseUrlRetrofit = baseUrl;
+    public static Retrofit getClient(String baseUrl){
+        if(!baseUrl.equals(baseUrlRetrofit)) {
+            baseUrlRetrofit = baseUrl;
             retrofit = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())

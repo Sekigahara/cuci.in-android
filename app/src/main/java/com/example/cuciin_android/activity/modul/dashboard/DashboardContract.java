@@ -17,5 +17,6 @@ public interface DashboardContract {
 //        void getOutletData(Activity activity, LoginObj loginObj);
 //        void getOutletData(Activity activity, Context context);
         void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
+
     }
 }
