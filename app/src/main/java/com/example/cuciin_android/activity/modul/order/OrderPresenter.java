@@ -16,6 +16,7 @@ import com.example.cuciin_android.helper.ApiGoogleService;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
 import com.example.cuciin_android.utils.utility.UtilProvider;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -65,38 +66,32 @@ public class OrderPresenter implements OrderContract.Presenter{
     public void addTransaction(final Activity activity, final DataOutletObj outletObj, int[] amount, LaundryType laundryType) {
         LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
         mApiService = UtilsApi.getAPIServiceLocal();
-//        Log.d("nama outlet", outletObj.getName());
-        Toast.makeText(activity, outletObj.getName(), Toast.LENGTH_LONG);
+        Log.d("laundry type", String.valueOf(laundryType));
         Call<Transaction> call = mApiService.addLundryTransaction(
                 "Bearer " + loginObj.getDataObj().getToken(),
                 String.valueOf(outletObj.getName()),
-                5000,
-                500,
-                String.valueOf(1),
-                "masih berjalan",
-                loginObj.getDataObj().getId(),
-                2
+                new Gson().toJson(laundryType),
+                3
         );
         call.enqueue(new Callback<Transaction>() {
             @Override
             public void onResponse(Call<Transaction> call, Response<Transaction> response) {
                 Intent intent = new Intent(activity, DashboardActivity.class);
-                if(response.isSuccessful() == true){
+                if(response.isSuccessful()){
                     Transaction transaction = response.body();
-                    if(transaction.getSuccess() == true){
+                    if(transaction != null && transaction.getSuccess()){
                         Toast.makeText(activity, "Transaction Added", Toast.LENGTH_LONG).show();
-                        intent.putExtra("transaction", transaction);
 
-                        //view.goToNewTask(intent);
+                        view.goToNewTask(intent);
                     }else
                         Toast.makeText(activity, "Error 1 :" + response.message(), Toast.LENGTH_LONG).show();
                 }else
-                    Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "Error 2 :" + response.message(), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<Transaction> call, Throwable t) {
-
+                Log.d("log failur", "message on failure", t);
             }
         });
     }

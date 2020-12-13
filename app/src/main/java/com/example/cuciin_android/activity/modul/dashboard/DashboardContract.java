@@ -16,7 +16,7 @@ public interface DashboardContract {
     interface Presenter extends BasePresenter {
 //        void getOutletData(Activity activity, LoginObj loginObj);
 //        void getOutletData(Activity activity, Context context);
-        void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
+//        void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
 
     }
 }

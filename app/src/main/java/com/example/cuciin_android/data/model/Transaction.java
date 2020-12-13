@@ -13,7 +13,7 @@ public class Transaction implements Serializable {
     private String message;
     @Expose
     @SerializedName("data")
-    private List<DataTransactionObj> data;
+    private DataTransactionObj data;
     @Expose
     @SerializedName("success")
     private boolean success;
@@ -26,11 +26,11 @@ public class Transaction implements Serializable {
         this.message = message;
     }
 
-    public List<DataTransactionObj> getData() {
+    public DataTransactionObj getData() {
         return data;
     }
 
-    public void setData(List<DataTransactionObj> data) {
+    public void setData(DataTransactionObj data) {
         this.data = data;
     }
 

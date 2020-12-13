@@ -79,11 +79,7 @@ public interface ApiService {
     Call<Transaction> addLundryTransaction(
             @Header("authorization") String token,
             @Field("address") String address,
-            @Field("price") int price,
-            @Field("amount") double amount,
             @Field("laundry_type") String laundry_type,
-            @Field("status") String status,
-            @Field("customer_id") int customer_id,
             @Field("outlet_id") int outlet_id
             );
 }

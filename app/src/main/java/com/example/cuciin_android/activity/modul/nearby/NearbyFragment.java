@@ -87,13 +87,6 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
             }
         });
 
-        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View view) {
-                Log.d("Dashboard", " >>>> " + position);
-                mPresenter.orderItem(activity, listOutlet.get(position));
-            }
-        });
         return fragmentView;
     }
 
@@ -102,9 +95,13 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         mAdapter = new RecycleViewAdapterNearby(listOutlet, getResources());
         mRecyclerView.setAdapter(mAdapter);
 
-        //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
-        //mAdapter = new RecycleViewAdapterNearby(listOutlet);
-        //mRecyclerView.setAdapter(mAdapter);
+        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                Log.d("Dashboard", " >>>> " + position);
+                mPresenter.orderItem(activity, listOutlet.get(position));
+            }
+        });
     }
 
     public void gotoNewTask(Intent intent){

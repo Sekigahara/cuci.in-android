@@ -79,7 +79,6 @@ import java.util.List;
         buttonOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.d("outlet Obj Name", outletObj.getName());
                 mPresenter.addTransaction(activity, outletObj, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryType);
             }
         });
@@ -93,6 +92,7 @@ import java.util.List;
     }
 
     @Override
+
     public void setDataOutlet() {
         titleOutlet = fragmentView.findViewById(R.id.textViewNamaLaundry);
         titleOutlet.setText(outletObj.getName());
@@ -105,7 +105,8 @@ import java.util.List;
 
      @Override
      public void goToNewTask(Intent intent) {
-
+        startActivity(intent);
+        activity.finish();
      }
 
      public void setTypeLaundry(){
