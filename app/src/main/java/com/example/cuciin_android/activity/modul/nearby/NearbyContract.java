@@ -20,6 +20,7 @@ public interface NearbyContract {
 
     interface Presenter extends BasePresenter {
         List<DataOutletObj> sortByAscending(List<DataOutletObj> data);
+        void orderItem(Activity activity, DataOutletObj outletObj);
         void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
     }
 }

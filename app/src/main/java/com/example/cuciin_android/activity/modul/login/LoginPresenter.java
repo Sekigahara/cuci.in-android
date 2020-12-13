@@ -30,9 +30,9 @@ public class LoginPresenter implements LoginContract.Presenter{
     public void start(){
         UtilProvider.initUserSession(this.context);
 
-        if(UtilProvider.getUserSessionUtil().getSession() != null){
-            view.gotoDashboard();   //jika sudah login langsung masuk dashboard
-        }
+//        if(UtilProvider.getUserSessionUtil().getSession() != null){
+//            view.gotoDashboard();   //jika sudah login langsung masuk dashboard
+//        }
     }
 
     public int onLogin(User user){
@@ -40,7 +40,7 @@ public class LoginPresenter implements LoginContract.Presenter{
     }
 
     public void validateLogin(final User user, final Activity activity){
-        mApiService = UtilsApi.getAPIService();
+        mApiService = UtilsApi.getAPIServiceLocal();
         Call<LoginObj> call = mApiService.loginRequest(user.getUsername(), user.getPassword());
         call.enqueue(new Callback<LoginObj>() {
             @Override

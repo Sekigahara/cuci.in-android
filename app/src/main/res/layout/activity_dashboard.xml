@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="35dp"
             android:layout_marginTop="27dp"
-            android:background="@drawable/background_search"
+            android:background="@drawable/button_white"
             android:drawableStart="@drawable/ic_baseline_search_24"
             android:drawableEnd="@drawable/ic_baseline_mic_24"
             android:ems="10"

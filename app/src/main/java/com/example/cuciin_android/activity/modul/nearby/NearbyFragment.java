@@ -1,9 +1,11 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.dashboard.LocationTrack;
+import com.example.cuciin_android.activity.modul.order.OrderActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.OutletTestObj;
@@ -84,16 +87,6 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
             }
         });
 
-        /*
-        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View view) {
-                //int id = listOutlet.get(position).getId();
-                Log.d("Dashboard", ">>>>" + position);
-
-            }
-        });
-        */
         return fragmentView;
     }
 
@@ -102,9 +95,13 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         mAdapter = new RecycleViewAdapterNearby(listOutlet, getResources());
         mRecyclerView.setAdapter(mAdapter);
 
-        //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
-        //mAdapter = new RecycleViewAdapterNearby(listOutlet);
-        //mRecyclerView.setAdapter(mAdapter);
+        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                Log.d("Dashboard", " >>>> " + position);
+                mPresenter.orderItem(activity, listOutlet.get(position));
+            }
+        });
     }
 
     public void gotoNewTask(Intent intent){

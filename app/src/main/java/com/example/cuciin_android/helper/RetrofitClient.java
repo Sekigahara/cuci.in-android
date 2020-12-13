@@ -1,5 +1,7 @@
 package com.example.cuciin_android.helper;
 
+import android.util.Log;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -10,6 +12,7 @@ public class RetrofitClient {
     private static String baseUrlRetrofit = null;
 
     public static Retrofit getClient(String baseUrl){
+        Log.d("Retrofit URL", baseUrl);
         if(!baseUrl.equals(baseUrlRetrofit)) {
             baseUrlRetrofit = baseUrl;
             retrofit = new Retrofit.Builder()

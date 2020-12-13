@@ -28,35 +28,23 @@ public class OrderListPresenter implements OrderListContract.Presenter {
     }
 
     public void start() {
-
     }
 
-    public void getTransaction(final Activity activity){
+    public void getTransaction(final Activity activity) {
         String token = UtilProvider.getUserSessionUtil().getSession().getDataObj().getToken();
         int id = UtilProvider.getUserSessionUtil().getSession().getDataObj().getId();
 
-        mApiService = UtilsApi.getAPIService();
+        mApiService = UtilsApi.getAPIServiceLocal();
         Call<TransactionObj> call = mApiService.getHistoryTransaction("Bearer " + token, id);
         call.enqueue(new Callback<TransactionObj>() {
             @Override
             public void onResponse(Call<TransactionObj> call, Response<TransactionObj> response) {
-                if (response.isSuccessful() == true) {
-                    TransactionObj transactionObj = response.body();
-                    if (transactionObj.getSuccess() == true) {
-                        view.setViewData(transactionObj);
-                        //Toast.makeText(activity, "Show Customer", Toast.LENGTH_LONG).show();
 
-                    } else
-                        Toast.makeText(activity, "Error1", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(activity, "error2", Toast.LENGTH_LONG).show();
-                }
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
-                Toast.makeText(activity, t.getMessage(), Toast.LENGTH_LONG).show();
-                view.setViewData(null);
+            public void onFailure(Call<TransactionObj> call, Throwable t) {
+
             }
         });
     }

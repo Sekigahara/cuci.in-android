@@ -1,4 +1,4 @@
-package com.example.cuciin_android.utils.recycler;
+package com.example.cuciin_android.utils;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.data.model.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
 
 import org.w3c.dom.Text;

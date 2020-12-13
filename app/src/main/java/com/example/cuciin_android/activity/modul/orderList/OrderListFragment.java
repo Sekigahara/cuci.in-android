@@ -17,7 +17,7 @@ import com.example.cuciin_android.activity.modul.detail_transaction.DetailActivi
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
 import com.example.cuciin_android.data.model.transaction.TransactionObj;
-import com.example.cuciin_android.utils.recycler.RecycleViewAdapterOrderList;
+import com.example.cuciin_android.utils.RecycleViewAdapterOrderList;
 
 import java.util.List;
 
