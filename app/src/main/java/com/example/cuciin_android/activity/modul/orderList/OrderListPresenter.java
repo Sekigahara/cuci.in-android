@@ -35,7 +35,7 @@ public class OrderListPresenter implements OrderListContract.Presenter {
         String token = UtilProvider.getUserSessionUtil().getSession().getDataObj().getToken();
         int id = UtilProvider.getUserSessionUtil().getSession().getDataObj().getId();
 
-        mApiService = UtilsApi.getAPIService();
+        mApiService = UtilsApi.getLocalAPIService();
         Call<TransactionObj> call = mApiService.getHistoryTransaction("Bearer " + token, id);
         call.enqueue(new Callback<TransactionObj>() {
             @Override

@@ -12,16 +12,18 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAdapterNearby.MyViewHolder>{
-    private static List<DataOutletObj> mDataset;
+    private static ArrayList<PackedOutlet> mDataset;
     private static MyClickListener myClickListener;
     private Resources resources;
 
@@ -47,7 +49,7 @@ public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAd
         }
     }
 
-    public RecycleViewAdapterNearby(List<DataOutletObj> myDataset, Resources resources){
+    public RecycleViewAdapterNearby(ArrayList<PackedOutlet> myDataset, Resources resources){
         mDataset = myDataset;
         this.resources = resources;
     }
@@ -60,45 +62,35 @@ public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAd
     }
 
     public void onBindViewHolder(MyViewHolder holder, int position){
-        //Logic Set Distance
-        Double fromLat = UtilProvider.getLocationUtil().getLocationLatitude();
-        Double fromLng = UtilProvider.getLocationUtil().getLocationLongitude();
-        LatLng from = new LatLng(fromLat, fromLng);
-
-        Double toLat = mDataset.get(position).getGeometry().getLocation().getLat();
-        Double toLng = mDataset.get(position).getGeometry().getLocation().getLng();
-        LatLng to  = new LatLng(toLat, toLng);
-
-        Double distance = countDistance(from, to);
-        holder.tvLaundryDistance.setText(String.format("%.2f", distance) + " KM From Your Location");
+        holder.tvLaundryDistance.setText(String.format("%.2f", mDataset.get(position).getDistance()) + " KM From Your Location");
 
         //Set Laundry Name
         holder.tvLaundryName.setText(mDataset.get(position).getName());
 
         //Set Rating
         if(mDataset.get(position).getRating() == null)
-            holder.tvRating.setText("unrated");
+            holder.tvRating.setText("Not Rated");
         else
             holder.tvRating.setText(mDataset.get(position).getRating().toString());
 
 
         holder.ivLaundryPhoto.setImageResource(R.mipmap.ic_notfound);
         //Set Photo
-        if(mDataset.get(position).getPhotos() == null || mDataset.get(position).getPhotos().get(0).getPhotoReference() == null)
+        if(mDataset.get(position).getPhoto() == null)
             holder.ivLaundryPhoto.setImageResource(R.mipmap.ic_notfound);
         else{
-            String URL = settingUpURL("400", "400", mDataset.get(position).getPhotos().get(0).getPhotoReference());
+            String URL = settingUpURL("400", "400", mDataset.get(position).getPhoto());
             Picasso.get().load(URL).into(holder.ivLaundryPhoto);
         }
 
         //Set Status Open
         Drawable greenButton = resources.getDrawable(R.drawable.custom_status);
         Drawable redButton = resources.getDrawable(R.drawable.custom_status_red);
-        if(mDataset.get(position).getOpeningHours() == null){
+        if(mDataset.get(position).getOpen() == null){
             holder.btStatus.setText("Close");
             holder.btStatus.setBackground(redButton);
         }else {
-            if(mDataset.get(position).getOpeningHours().getOpenNow() == true){
+            if(mDataset.get(position).getOpen() == true){
                 holder.btStatus.setText("Open");
                 holder.btStatus.setBackground(greenButton);
             }else{

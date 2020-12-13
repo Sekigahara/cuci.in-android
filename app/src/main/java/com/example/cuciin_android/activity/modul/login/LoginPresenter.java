@@ -40,7 +40,7 @@ public class LoginPresenter implements LoginContract.Presenter{
     }
 
     public void validateLogin(final User user, final Activity activity){
-        mApiService = UtilsApi.getAPIService();
+        mApiService = UtilsApi.getLocalAPIService();
         Call<LoginObj> call = mApiService.loginRequest(user.getUsername(), user.getPassword());
         call.enqueue(new Callback<LoginObj>() {
             @Override
