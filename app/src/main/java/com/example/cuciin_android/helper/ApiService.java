@@ -5,6 +5,8 @@ import com.example.cuciin_android.data.model.LaundryType;
 import com.example.cuciin_android.data.model.OutletTestObj;
 import com.example.cuciin_android.data.model.Transaction;
 import com.example.cuciin_android.data.model.customer.CustomerObj;
+import com.example.cuciin_android.data.model.outlet_local.DataOutletLocal;
+import com.example.cuciin_android.data.model.outlet_local.OutletLocal;
 import com.example.cuciin_android.data.model.register.RegisterObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.google.gson.JsonObject;
@@ -61,17 +63,9 @@ public interface ApiService {
             @Path("user_id") int user_id
     );
 
-    // i guess unsused
-    @GET("customer/user/{user_id}")
-    Call<CustomerObj> getCustomerByUserId(
-            @Header("Authorization") String token,
-            @Path("user_id") int user_id
-    );
-
-    @GET("transaction/customer/{customer_id}")
-    Call<TransactionObj> getTransactionbyCustomerId(
-            @Header("Authorization") String token,
-            @Path("customer_id") int customer_id
+    @GET("outlet")
+    Call<OutletLocal> getLocalOutlet(
+            @Header("Authorization") String token
     );
 
     @FormUrlEncoded

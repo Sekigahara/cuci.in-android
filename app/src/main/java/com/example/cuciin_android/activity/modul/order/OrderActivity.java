@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
 import com.example.cuciin_android.data.model.LaundryType;
+import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 
@@ -20,10 +21,10 @@ public class OrderActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.GONE);
 
         Bundle extras = getIntent().getExtras();
-        DataOutletObj dataOutletObj = (DataOutletObj) extras.getSerializable("outletObj");
+        PackedOutlet packedOutlet = (PackedOutlet) extras.getSerializable("packedOutlet");
         LaundryType laundryType = (LaundryType) extras.getSerializable("laundryType");
 
-        orderFragment = new OrderFragment(dataOutletObj, laundryType);
+        orderFragment = new OrderFragment(packedOutlet, laundryType);
         setCurrentFragment(orderFragment, true);
     }
 

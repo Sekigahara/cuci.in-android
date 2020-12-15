@@ -1,8 +1,8 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,17 +18,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
-import com.example.cuciin_android.activity.modul.dashboard.LocationTrack;
-import com.example.cuciin_android.activity.modul.order.OrderActivity;
+import com.example.cuciin_android.activity.modul.nearby.LocationTrack;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.OutletTestObj;
+import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.utils.recycler.RecycleViewAdapterNearby;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.LOCATION_SERVICE;
 
 public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.Presenter> implements NearbyContract.View {
     private RecyclerView.Adapter mAdapter;
@@ -61,10 +64,23 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if(statusOfGPS == true){
-            LocationTrack locationTrack = new LocationTrack(activity);
+            LocationManager mLocationManager;
+            mLocationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
+            List<String> providers = mLocationManager.getProviders(true);
+            Location bestLocation = null;
+            for (String provider : providers) {
+                Location l = mLocationManager.getLastKnownLocation(provider);
+                if (l == null) {
+                    continue;
+                }
+                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                    // Found best last known location: %s", l);
+                    bestLocation = l;
+                }
+            }
 
-            final Double lat = locationTrack.getLatitude();
-            final Double lng = locationTrack.getLongitude();
+            final Double lat = bestLocation.getLatitude();
+            final Double lng = bestLocation.getLongitude();
             UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
 
             mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
@@ -87,21 +103,41 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
             }
         });
 
+        /*
+        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                //int id = listOutlet.get(position).getId();
+                Log.d("Dashboard", ">>>>" + position);
+
+            }
+        });
+        */
         return fragmentView;
     }
 
     public void viewNearby(OutletObj outletObj){
         final List<DataOutletObj> listOutlet = outletObj.getResults();
-        mAdapter = new RecycleViewAdapterNearby(listOutlet, getResources());
+        mPresenter.fetchLocalMaps(listOutlet, activity);
+    }
+
+    public void showAllView(ArrayList<PackedOutlet> dataOutlet){
+        final ArrayList<PackedOutlet> data = mPresenter.sortByAscending(dataOutlet);
+
+        mAdapter = new RecycleViewAdapterNearby(data, getResources());
         mRecyclerView.setAdapter(mAdapter);
 
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
             public void onItemClick(int position, View view) {
                 Log.d("Dashboard", " >>>> " + position);
-                mPresenter.orderItem(activity, listOutlet.get(position));
+                mPresenter.orderItem(activity, data.get(position));
             }
         });
+
+        //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
+//        mAdapter = new RecycleViewAdapterNearby(data, getResources());
+//        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void gotoNewTask(Intent intent){

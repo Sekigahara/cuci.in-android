@@ -9,6 +9,7 @@ import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.data.model.DataLaundryType;
 import com.example.cuciin_android.data.model.LaundryType;
 import com.example.cuciin_android.data.model.Transaction;
+import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
@@ -63,15 +64,15 @@ public class OrderPresenter implements OrderContract.Presenter{
     }
 
     @Override
-    public void addTransaction(final Activity activity, final DataOutletObj outletObj, int[] amount, LaundryType laundryType) {
+    public void addTransaction(final Activity activity, final PackedOutlet packedOutlet, int[] amount, LaundryType laundryType) {
         LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
-        mApiService = UtilsApi.getAPIServiceLocal();
+        mApiService = UtilsApi.getLocalAPIService();
         Log.d("laundry type", String.valueOf(laundryType));
         Call<Transaction> call = mApiService.addLundryTransaction(
                 "Bearer " + loginObj.getDataObj().getToken(),
-                String.valueOf(outletObj.getName()),
+                String.valueOf(packedOutlet.getName()),
                 new Gson().toJson(laundryType),
-                3
+                Integer.parseInt(packedOutlet.getId())
         );
         call.enqueue(new Callback<Transaction>() {
             @Override
