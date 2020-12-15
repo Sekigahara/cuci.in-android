@@ -34,6 +34,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Laundry Name"
                 android:textSize="14sp"
+                android:maxLines="1"
                 android:textStyle="bold" />
 
             <TextView
