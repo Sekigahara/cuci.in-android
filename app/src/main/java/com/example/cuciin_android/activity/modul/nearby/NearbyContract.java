@@ -27,5 +27,6 @@ public interface NearbyContract {
         void fetchLocalMaps(List<DataOutletObj> data, final Activity activity);
         void packingData(final List<DataOutletObj> data, OutletLocal outletLocal);
         ArrayList<PackedOutlet> sortByAscending(ArrayList<PackedOutlet> data);
+        public void orderItem(final Activity activity, final PackedOutlet packedOutlet);
     }
 }

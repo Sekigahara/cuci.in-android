@@ -8,6 +8,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.cuciin_android.activity.modul.order.OrderActivity;
+import com.example.cuciin_android.data.model.LaundryType;
+import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
@@ -172,6 +175,35 @@ public class NearbyPresenter implements NearbyContract.Presenter {
         }
 
         return data;
+    }
+
+    @Override
+    public void orderItem(final Activity activity, final PackedOutlet packedOutlet) {
+        LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
+        mApiService= UtilsApi.getLocalAPIService();
+        Call<LaundryType> call = mApiService.getLaundryTypeAll("Bearer " + loginObj.getDataObj().getToken());
+        call.enqueue(new Callback<LaundryType>() {
+            @Override
+            public void onResponse(Call<LaundryType> call, Response<LaundryType> response) {
+                if(response.isSuccessful() == true){
+                    LaundryType laundryTypeAll = response.body();
+                    if(laundryTypeAll.getSuccess() == true){
+                        Intent intent = new Intent(activity, OrderActivity.class);
+                        intent.putExtra("laundryType", laundryTypeAll);
+                        intent.putExtra("packedOutlet", packedOutlet);
+
+                        view.gotoNewTask(intent);
+                    }else
+                        Log.d("error 1", "error 1 : " + laundryTypeAll.getMessage());
+                }else
+                    Log.d("error 2", "error 2 : " + response.message());
+            }
+
+            @Override
+            public void onFailure(Call<LaundryType> call, Throwable t) {
+
+            }
+        });
     }
 
     private Double countDistance(LatLng from, LatLng to){

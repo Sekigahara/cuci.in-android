@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,14 +122,22 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
     }
 
     public void showAllView(ArrayList<PackedOutlet> dataOutlet){
-        ArrayList<PackedOutlet> data = mPresenter.sortByAscending(dataOutlet);
+        final ArrayList<PackedOutlet> data = mPresenter.sortByAscending(dataOutlet);
 
         mAdapter = new RecycleViewAdapterNearby(data, getResources());
         mRecyclerView.setAdapter(mAdapter);
+
+        ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                Log.d("Dashboard", " >>>> " + position);
+                mPresenter.orderItem(activity, data.get(position));
+            }
+        });
 
         //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
-        mAdapter = new RecycleViewAdapterNearby(data, getResources());
-        mRecyclerView.setAdapter(mAdapter);
+//        mAdapter = new RecycleViewAdapterNearby(data, getResources());
+//        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void gotoNewTask(Intent intent){

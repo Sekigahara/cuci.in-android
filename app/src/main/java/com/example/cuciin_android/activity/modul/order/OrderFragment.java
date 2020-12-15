@@ -18,6 +18,7 @@ import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.DataLaundryType;
 import com.example.cuciin_android.data.model.LaundryType;
+import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.utils.RecycleViewAdapterLaundryType;
@@ -27,7 +28,7 @@ import java.util.List;
 
  public class OrderFragment extends BaseFragment<OrderActivity, OrderContract.Presenter>
         implements OrderContract.View {
-     DataOutletObj outletObj;
+     PackedOutlet packedOutlet;
      LaundryType laundryType;
      LoginObj loginObj;
     private RecyclerView.Adapter mAdapter;
@@ -40,8 +41,8 @@ import java.util.List;
     private Button buttonOrder;
     int[] id;
 
-    public OrderFragment(DataOutletObj dataOutletObj, LaundryType laundryType) {
-        this.outletObj = dataOutletObj;
+    public OrderFragment(PackedOutlet packedOutlet, LaundryType laundryType) {
+        this.packedOutlet = packedOutlet;
         this.laundryType = laundryType;
         this.loginObj = loginObj;
     }
@@ -79,7 +80,7 @@ import java.util.List;
         buttonOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.addTransaction(activity, outletObj, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryType);
+                mPresenter.addTransaction(activity, packedOutlet, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryType);
             }
         });
 
@@ -95,7 +96,7 @@ import java.util.List;
 
     public void setDataOutlet() {
         titleOutlet = fragmentView.findViewById(R.id.textViewNamaLaundry);
-        titleOutlet.setText(outletObj.getName());
+        titleOutlet.setText(packedOutlet.getName());
     }
 
      @Override

@@ -7,6 +7,7 @@ import com.example.cuciin_android.base.BasePresenter;
 import com.example.cuciin_android.base.BaseView;
 import com.example.cuciin_android.data.model.DataLaundryType;
 import com.example.cuciin_android.data.model.LaundryType;
+import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface OrderContract {
 
     interface Presenter extends BasePresenter {
         int[] setData(int length);
-        void addTransaction(Activity activity, DataOutletObj outletObj, int[] amount, LaundryType laundryType);
+        void addTransaction(Activity activity, PackedOutlet packedOutlet, int[] amount, LaundryType laundryType);
         int hitungHarga(double[] amount, double[] price);
         //ArrayList<LaundryType> getDataLaundryType(JsonArray laundryType);
     }
