@@ -15,16 +15,17 @@ public class OrderActivity extends BaseFragmentHolderActivity {
     protected void initializeFragment() {
         initializeView();
 
+        vMenuBarShadow.setVisibility(View.GONE);
+        toolbar.setVisibility(View.GONE);
         ibHome.setVisibility(View.GONE);
         ibCart.setVisibility(View.GONE);
         ibAccount.setVisibility(View.GONE);
         ibWashmachine.setVisibility(View.GONE);
 
         Bundle extras = getIntent().getExtras();
-        PackedOutlet packedOutlet = (PackedOutlet) extras.getSerializable("packedOutlet");
-        LaundryType laundryType = (LaundryType) extras.getSerializable("laundryType");
+        PackedOutlet packedOutlet = (PackedOutlet) extras.getSerializable("DATAOUTLET");
 
-        orderFragment = new OrderFragment(packedOutlet, laundryType);
+        orderFragment = new OrderFragment(packedOutlet);
         setCurrentFragment(orderFragment, true);
     }
 

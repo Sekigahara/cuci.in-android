@@ -35,13 +35,16 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
         mPresenter = new DashboardPresenter(this);
         mPresenter.start();
 
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
         ivNearby = fragmentView.findViewById(R.id.ivNearby);
         ivNearby.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                gotoNewTask(new Intent(activity, NearbyActivity.class));
+                LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                if(statusOfGPS == true){
+                    gotoNewTask(new Intent(activity, NearbyActivity.class));
+                }else{
+                    Toast.makeText(getActivity(), "Enable Your GPS", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
