@@ -17,7 +17,7 @@ import java.util.List;
 public interface NearbyContract {
     interface View extends BaseView<Presenter> {
         void gotoNewTask(Intent intent);
-        void gotoNewTask(Intent intent, LoginObj loginObj);
+        void gotoNewTask(Intent intent, PackedOutlet packedOutlet, String intentMessage);
         void viewNearby(OutletObj outletObj);
         void showAllView(ArrayList<PackedOutlet> dataOutlet);
     }
@@ -27,6 +27,5 @@ public interface NearbyContract {
         void fetchLocalMaps(List<DataOutletObj> data, final Activity activity);
         void packingData(final List<DataOutletObj> data, OutletLocal outletLocal);
         ArrayList<PackedOutlet> sortByAscending(ArrayList<PackedOutlet> data);
-        public void orderItem(final Activity activity, final PackedOutlet packedOutlet);
     }
 }

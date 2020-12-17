@@ -22,15 +22,13 @@ import com.example.cuciin_android.data.model.nearby.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.utils.RecycleViewAdapterLaundryType;
+import com.example.cuciin_android.utils.utility.UtilProvider;
 
 import java.util.List;
 
 
- public class OrderFragment extends BaseFragment<OrderActivity, OrderContract.Presenter>
-        implements OrderContract.View {
+ public class OrderFragment extends BaseFragment<OrderActivity, OrderContract.Presenter> implements OrderContract.View {
      PackedOutlet packedOutlet;
-     LaundryType laundryType;
-     LoginObj loginObj;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
@@ -41,10 +39,8 @@ import java.util.List;
     private Button buttonOrder;
     int[] id;
 
-    public OrderFragment(PackedOutlet packedOutlet, LaundryType laundryType) {
+    public OrderFragment(PackedOutlet packedOutlet) {
         this.packedOutlet = packedOutlet;
-        this.laundryType = laundryType;
-        this.loginObj = loginObj;
     }
 
      @Nullable
@@ -52,7 +48,7 @@ import java.util.List;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.order_view, container, false);
-        mPresenter = new OrderPresenter(this, loginObj);
+        mPresenter = new OrderPresenter(this);
         mPresenter.start();
 
         setDataOutlet();
@@ -61,6 +57,12 @@ import java.util.List;
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mPresenter.orderItem(activity);
+        return fragmentView;
+    }
+
+    public void viewLaundryTypeData(final LaundryType laundryType){
         final List<DataLaundryType> listLaundryType = laundryType.getData();
         mAdapter = new RecycleViewAdapterLaundryType(listLaundryType);
         mRecyclerView.setAdapter(mAdapter);
@@ -80,11 +82,10 @@ import java.util.List;
         buttonOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.addTransaction(activity, packedOutlet, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryType);
+                final LaundryType laundryTypeYeet = laundryType;
+                mPresenter.addTransaction(activity, packedOutlet, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryTypeYeet);
             }
         });
-
-        return fragmentView;
     }
 
     @Override
@@ -96,6 +97,7 @@ import java.util.List;
 
     public void setDataOutlet() {
         titleOutlet = fragmentView.findViewById(R.id.textViewNamaLaundry);
+
         titleOutlet.setText(packedOutlet.getName());
     }
 

@@ -17,12 +17,14 @@ public interface OrderContract {
         void setDataOutlet();
         void setDataTipeLaundry();
         void goToNewTask(Intent intent);
+        void viewLaundryTypeData(LaundryType laundryType);
     }
 
     interface Presenter extends BasePresenter {
         int[] setData(int length);
         void addTransaction(Activity activity, PackedOutlet packedOutlet, int[] amount, LaundryType laundryType);
         int hitungHarga(double[] amount, double[] price);
+        public void orderItem(final Activity activity);
         //ArrayList<LaundryType> getDataLaundryType(JsonArray laundryType);
     }
 }

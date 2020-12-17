@@ -31,12 +31,10 @@ public class OrderPresenter implements OrderContract.Presenter{
     DataOutletObj outlet;
     ApiService mApiService;
     ApiGoogleService apigoogle;
-    final LoginObj loginObj;
     OutletObj outletObj;
 
-    public OrderPresenter(OrderContract.View view, LoginObj loginObj) {
+    public OrderPresenter(OrderContract.View view) {
         this.view = view;
-        this.loginObj = loginObj;
     }
 
     @Override
@@ -64,7 +62,7 @@ public class OrderPresenter implements OrderContract.Presenter{
     }
 
     @Override
-    public void addTransaction(final Activity activity, final PackedOutlet packedOutlet, int[] amount, LaundryType laundryType) {
+    public void addTransaction(final Activity activity, final PackedOutlet packedOutlet, int[] amount, final LaundryType laundryType) {
         LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
         mApiService = UtilsApi.getLocalAPIService();
         Log.d("laundry type", String.valueOf(laundryType));
@@ -93,6 +91,33 @@ public class OrderPresenter implements OrderContract.Presenter{
             @Override
             public void onFailure(Call<Transaction> call, Throwable t) {
                 Log.d("log failur", "message on failure", t);
+            }
+        });
+    }
+
+    @Override
+    public void orderItem(final Activity activity) {
+        LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
+        mApiService= UtilsApi.getLocalAPIService();
+        Call<LaundryType> call = mApiService.getLaundryTypeAll("Bearer " + loginObj.getDataObj().getToken());
+        call.enqueue(new Callback<LaundryType>() {
+            @Override
+            public void onResponse(Call<LaundryType> call, Response<LaundryType> response) {
+                if(response.isSuccessful() == true){
+                    LaundryType laundryTypeAll = response.body();
+                    if(laundryTypeAll.getSuccess() == true){
+                        Intent intent = new Intent(activity, OrderActivity.class);
+
+                        view.viewLaundryTypeData(laundryTypeAll);
+                    }else
+                        Log.d("error 1", "error 1 : " + laundryTypeAll.getMessage());
+                }else
+                    Log.d("error 2", "error 2 : " + response.message());
+            }
+
+            @Override
+            public void onFailure(Call<LaundryType> call, Throwable t) {
+
             }
         });
     }

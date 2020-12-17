@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.nearby.LocationTrack;
+import com.example.cuciin_android.activity.modul.orderList.OrderListActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.OutletTestObj;
@@ -63,31 +64,26 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-        if(statusOfGPS == true){
-            LocationManager mLocationManager;
-            mLocationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
-            List<String> providers = mLocationManager.getProviders(true);
-            Location bestLocation = null;
-            for (String provider : providers) {
-                Location l = mLocationManager.getLastKnownLocation(provider);
-                if (l == null) {
-                    continue;
-                }
-                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                    // Found best last known location: %s", l);
-                    bestLocation = l;
-                }
+        LocationManager mLocationManager;
+        mLocationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location l = mLocationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
             }
-
-            final Double lat = bestLocation.getLatitude();
-            final Double lng = bestLocation.getLongitude();
-            UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
-
-            mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
-        }else{
-            Toast.makeText(getActivity(), "Enable Your GPS", Toast.LENGTH_LONG).show();
-            gotoNewTask(new Intent(activity, DashboardActivity.class));
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
         }
+
+        final Double lat = bestLocation.getLatitude();
+        final Double lng = bestLocation.getLongitude();
+        UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
+
+        mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
 
         mRecyclerView = fragmentView.findViewById(R.id.rvNearby);
         mRecyclerView.setHasFixedSize(true);
@@ -130,14 +126,9 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
             public void onItemClick(int position, View view) {
-                Log.d("Dashboard", " >>>> " + position);
-                mPresenter.orderItem(activity, data.get(position));
+                gotoNewTask(new Intent(activity, OrderListActivity.class), data.get(position), "DATAOUTLET");
             }
         });
-
-        //final List<DataOutletTestObj> listOutlet = outletTestObj.getData();
-//        mAdapter = new RecycleViewAdapterNearby(data, getResources());
-//        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void gotoNewTask(Intent intent){
@@ -145,8 +136,8 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         activity.finish();
     }
 
-    public void gotoNewTask(Intent intent, LoginObj loginObj){
-        intent.putExtra("session", loginObj);
+    public void gotoNewTask(Intent intent, PackedOutlet packedOutlet, String intentMessage){
+        intent.putExtra(intentMessage, packedOutlet);
         startActivity(intent);
         activity.finish();
     }
