@@ -19,6 +19,7 @@ import com.example.cuciin_android.helper.UtilsApi;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -63,6 +64,13 @@ public class OrderPresenter implements OrderContract.Presenter{
 
     @Override
     public void addTransaction(final Activity activity, final PackedOutlet packedOutlet, int[] amount, final LaundryType laundryType) {
+        int id = 0;
+
+        if(packedOutlet.getId() != null)
+            id = Integer.parseInt(packedOutlet.getId());
+        if(packedOutlet.getIdGoogle() != null)
+            id = Integer.parseInt(packedOutlet.getIdGoogle());
+
         LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
         mApiService = UtilsApi.getLocalAPIService();
         Log.d("laundry type", String.valueOf(laundryType));
@@ -70,18 +78,17 @@ public class OrderPresenter implements OrderContract.Presenter{
                 "Bearer " + loginObj.getDataObj().getToken(),
                 String.valueOf(packedOutlet.getName()),
                 new Gson().toJson(laundryType),
-                Integer.parseInt(packedOutlet.getId())
+                id
         );
         call.enqueue(new Callback<Transaction>() {
             @Override
             public void onResponse(Call<Transaction> call, Response<Transaction> response) {
-                Intent intent = new Intent(activity, DashboardActivity.class);
                 if(response.isSuccessful()){
                     Transaction transaction = response.body();
                     if(transaction != null && transaction.getSuccess()){
                         Toast.makeText(activity, "Transaction Added", Toast.LENGTH_LONG).show();
 
-                        view.goToNewTask(intent);
+                        view.goToNewTask( new Intent(activity, DashboardActivity.class));
                     }else
                         Toast.makeText(activity, "Error 1 :" + response.message(), Toast.LENGTH_LONG).show();
                 }else
@@ -121,13 +128,12 @@ public class OrderPresenter implements OrderContract.Presenter{
             }
         });
     }
-//
-    @Override
-    public int hitungHarga(double[] amount, double[] price) {
-        int value = 0;
 
-        for(int i = 0; i < amount.length; i++)
-            value += amount[i] * price[i];
-        return value;
+    @Override
+    public String getUrlLoad(String reference, int width, int height) {
+        String URL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="+width
+                +"&maxheight="+height+"&photoreference="+reference+"&key="+UtilProvider.getKey();
+
+        return URL;
     }
 }

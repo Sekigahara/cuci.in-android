@@ -13,8 +13,8 @@ public class OrderListActivity extends BaseFragmentHolderActivity {
     protected void initializeFragment(){
         initializeView();
 
-        vMenuBarShadow.setVisibility(View.GONE);
-        toolbar.setVisibility(View.GONE);
+        vMenuBarShadow.setVisibility(View.VISIBLE);
+        toolbar.setVisibility(View.VISIBLE);
         ibHome.setVisibility(View.VISIBLE);
         ibCart.setVisibility(View.VISIBLE);
         ibAccount.setVisibility(View.VISIBLE);

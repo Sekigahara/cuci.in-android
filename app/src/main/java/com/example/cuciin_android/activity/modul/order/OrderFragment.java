@@ -1,12 +1,14 @@
  package com.example.cuciin_android.activity.modul.order;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,9 @@ import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.utils.RecycleViewAdapterLaundryType;
 import com.example.cuciin_android.utils.utility.UtilProvider;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,9 +38,9 @@ import java.util.List;
     private RecyclerView.LayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
     private TextView titleOutlet;
-    private TextView alamatOutlet;
-    private TextView manhours;
     private TextView rating;
+    private ImageView outletIcon;
+    private TextView status;
     private Button buttonOrder;
     int[] id;
 
@@ -96,9 +101,31 @@ import java.util.List;
     @Override
 
     public void setDataOutlet() {
+        rating = fragmentView.findViewById(R.id.textViewRating);
+        outletIcon = fragmentView.findViewById(R.id.imageCardProfile);
         titleOutlet = fragmentView.findViewById(R.id.textViewNamaLaundry);
+        status = fragmentView.findViewById(R.id.textViewStatus);
 
         titleOutlet.setText(packedOutlet.getName());
+        rating.setText(String.valueOf(packedOutlet.getRating()));
+
+        if (packedOutlet.getPhoto() == null) {
+            outletIcon.setImageResource(R.mipmap.ic_notfound);
+        }else {
+            String URL = mPresenter.getUrlLoad(packedOutlet.getPhoto(), 400, 400);
+            Picasso.get().load(URL).into(outletIcon);
+        }
+
+        Drawable greenButton = getResources().getDrawable(R.drawable.custom_status);
+        Drawable redButton =getResources().getDrawable(R.drawable.custom_status_red);
+
+        if(packedOutlet.getOpen() == true){
+            status.setText("Open");
+            status.setBackground(greenButton);
+        }else{
+            status.setText("Close");
+            status.setBackground(redButton);
+        }
     }
 
      @Override
@@ -109,7 +136,6 @@ import java.util.List;
      @Override
      public void goToNewTask(Intent intent) {
         startActivity(intent);
-        activity.finish();
      }
 
      public void setTypeLaundry(){
