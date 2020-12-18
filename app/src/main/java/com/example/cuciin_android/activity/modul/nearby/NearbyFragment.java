@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.nearby.LocationTrack;
+import com.example.cuciin_android.activity.modul.order.OrderActivity;
 import com.example.cuciin_android.activity.modul.orderList.OrderListActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.login.LoginObj;
@@ -114,7 +115,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
 
     public void viewNearby(OutletObj outletObj){
         final List<DataOutletObj> listOutlet = outletObj.getResults();
-        mPresenter.fetchLocalMaps(listOutlet, activity);
+        mPresenter.fetchLocalMaps(listOutlet, activity, UtilProvider.getUserSessionUtil().getSession().getDataObj().getToken());
     }
 
     public void showAllView(ArrayList<PackedOutlet> dataOutlet){
@@ -126,27 +127,24 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
             @Override
             public void onItemClick(int position, View view) {
-                gotoNewTask(new Intent(activity, OrderListActivity.class), data.get(position), "DATAOUTLET");
+                gotoNewTask(new Intent(activity, OrderActivity.class), data.get(position), "DATAOUTLET");
             }
         });
     }
 
     public void gotoNewTask(Intent intent){
         startActivity(intent);
-        activity.finish();
     }
 
     public void gotoNewTask(Intent intent, PackedOutlet packedOutlet, String intentMessage){
         intent.putExtra(intentMessage, packedOutlet);
         startActivity(intent);
-        activity.finish();
     }
 
     public void gotoNewTask(Intent intent,LoginObj loginObj ,int id){
         intent.putExtra("session", loginObj);
         intent.putExtra("id", id);
         startActivity(intent);
-        activity.finish();
     }
 
     public void setPresenter(NearbyContract.Presenter presenter){
