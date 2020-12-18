@@ -1,7 +1,9 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.ArrayList;

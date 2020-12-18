@@ -4,7 +4,7 @@ import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 
 public class UserSessionUtil {
-    private UserSessionRepositoryRepository userSessionRepositoryRepository;
+    private static UserSessionRepositoryRepository userSessionRepositoryRepository;
 
     public UserSessionUtil(UserSessionRepositoryRepository userSessionRepositoryRepository){
         this.userSessionRepositoryRepository = userSessionRepositoryRepository;
