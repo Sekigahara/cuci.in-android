@@ -78,7 +78,6 @@ public class OrderListFragment extends BaseFragment<OrderListActivity, OrderList
 
     public void gotoNewTask(Intent intent){
         startActivity(intent);
-        activity.finish();
     }
 
     public void gotoNewTask(Intent intent, DataTransactionObj data){

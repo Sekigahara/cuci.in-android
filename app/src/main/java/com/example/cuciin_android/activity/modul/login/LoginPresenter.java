@@ -30,9 +30,9 @@ public class LoginPresenter implements LoginContract.Presenter{
     public void start(){
         UtilProvider.initUserSession(this.context);
 //
-//        if(UtilProvider.getUserSessionUtil().getSession() != null){
-//            view.gotoDashboard();   //jika sudah login langsung masuk dashboard
-//        }
+        if(UtilProvider.getUserSessionUtil().getSession() != null){
+            view.gotoDashboard();   //jika sudah login langsung masuk dashboard
+        }
     }
 
     public int onLogin(User user){

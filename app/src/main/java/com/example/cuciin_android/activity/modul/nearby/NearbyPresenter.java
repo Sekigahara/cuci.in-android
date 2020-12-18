@@ -80,11 +80,11 @@ public class NearbyPresenter implements NearbyContract.Presenter {
         });
     }
 
-    public void fetchLocalMaps(final List<DataOutletObj> data, final Activity activity){
+    public void fetchLocalMaps(final List<DataOutletObj> data, final Activity activity, final String token){
         mApiService = UtilsApi.getLocalAPIService();
-        String TOKEN = UtilProvider.getUserSessionUtil().getSession().getDataObj().getToken();
+        //String TOKEN = UtilProvider.getUserSessionUtil().getSession().getDataObj().getToken();
 
-        Call<OutletLocal> call = mApiService.getLocalOutlet("Bearer " + TOKEN);
+        Call<OutletLocal> call = mApiService.getLocalOutlet("Bearer " + token);
         call.enqueue(new Callback<OutletLocal>() {
             @Override
             public void onResponse(Call<OutletLocal> call, Response<OutletLocal> response) {

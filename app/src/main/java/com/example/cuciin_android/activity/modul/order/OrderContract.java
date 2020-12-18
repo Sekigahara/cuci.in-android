@@ -23,8 +23,8 @@ public interface OrderContract {
     interface Presenter extends BasePresenter {
         int[] setData(int length);
         void addTransaction(Activity activity, PackedOutlet packedOutlet, int[] amount, LaundryType laundryType);
-        int hitungHarga(double[] amount, double[] price);
         public void orderItem(final Activity activity);
+        public String getUrlLoad(String reference, int width, int height);
         //ArrayList<LaundryType> getDataLaundryType(JsonArray laundryType);
     }
 }

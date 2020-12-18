@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 public class UserSessionRepositoryRepository implements SessionRepository<LoginObj> {
     private static UserSessionRepositoryRepository instance;
     private static String SESSION_USER = "SessionUser";
-    private SharedPreferences sharedPref;
+    private static SharedPreferences sharedPref;
 
     public UserSessionRepositoryRepository(Context context)  {
         sharedPref = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
