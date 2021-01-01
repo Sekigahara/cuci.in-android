@@ -1,5 +1,6 @@
 package com.example.cuciin_android.activity.modul.orderList;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,11 +16,12 @@ import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.detail_transaction.DetailActivity;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
+import com.example.cuciin_android.data.model.transaction.PackedTransaction;
 import com.example.cuciin_android.data.model.transaction.TransactionObj;
-import com.example.cuciin_android.utils.RecycleViewAdapterOrderList;
+import com.example.cuciin_android.utils.recycler.RecycleViewAdapterOrderList;
+import com.google.android.libraries.places.api.model.Place;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class OrderListFragment extends BaseFragment<OrderListActivity, OrderListContract.Presenter> implements OrderListContract.View {
     private RecyclerView.Adapter mAdapter;
@@ -38,7 +40,7 @@ public class OrderListFragment extends BaseFragment<OrderListActivity, OrderList
         mPresenter = new OrderListPresenter(this);
         mPresenter.start();
 
-        mPresenter.getTransaction(activity);
+        mPresenter.getTransaction(activity, getContext());
         mRecyclerView = fragmentView.findViewById(R.id.rvOrderList);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(activity);
@@ -60,27 +62,35 @@ public class OrderListFragment extends BaseFragment<OrderListActivity, OrderList
         if(transactionObj == null){
             Toast.makeText(activity, "There is no Transaction History", Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(activity, "Transaction History is exist", Toast.LENGTH_LONG).show();
-            final List<DataTransactionObj> data = transactionObj.getData();
-
-            mAdapter = new RecycleViewAdapterOrderList(data);
-            mRecyclerView.setAdapter(mAdapter);
-
-            ((RecycleViewAdapterOrderList) mAdapter).setOnItemClickListener(new RecycleViewAdapterOrderList.MyClickListener() {
-                @Override
-                public void onItemClick(int position, View view) {
-                    DataTransactionObj selectedData = data.get(position);
-                    gotoNewTask(new Intent(activity, DetailActivity.class), selectedData);
-                }
-            });
+            //Toast.makeText(activity, "Transaction History is exist", Toast.LENGTH_LONG).show();
+            mPresenter.getDetailsGoogleOutlet(transactionObj, activity);
         }
+    }
+
+    public void setPackData(ArrayList<Place> listPlace){
+        final ArrayList<PackedTransaction> listTransaction = mPresenter.packTransactionData(transactionObj, listPlace);
+
+        mAdapter = new RecycleViewAdapterOrderList(listTransaction);
+        mRecyclerView.setAdapter(mAdapter);
+
+        ((RecycleViewAdapterOrderList) mAdapter).setOnItemClickListener(new RecycleViewAdapterOrderList.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                PackedTransaction packedTransaction = listTransaction.get(position);
+                gotoNewTask(new Intent(activity, DetailActivity.class), packedTransaction);
+            }
+        });
+    }
+
+    public Activity getActivityView(){
+        return activity;
     }
 
     public void gotoNewTask(Intent intent){
         startActivity(intent);
     }
 
-    public void gotoNewTask(Intent intent, DataTransactionObj data){
+    public void gotoNewTask(Intent intent, PackedTransaction data){
         intent.putExtra("transaction", data);
         startActivity(intent);
     }

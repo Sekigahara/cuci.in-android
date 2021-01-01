@@ -1,4 +1,4 @@
-package com.example.cuciin_android.utils;
+package com.example.cuciin_android.utils.recycler;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +8,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
-import com.example.cuciin_android.data.model.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
-import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
+import com.example.cuciin_android.data.model.transaction.PackedTransaction;
 
 public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleViewAdapterOrderList.MyViewHolder>{
-    private static List<DataTransactionObj> mDataset;
+    private static ArrayList<PackedTransaction> mDataset;
     private static RecycleViewAdapterOrderList.MyClickListener myClickListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -43,7 +37,7 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
         }
     }
 
-    public RecycleViewAdapterOrderList(List<DataTransactionObj> myDataset){
+    public RecycleViewAdapterOrderList(ArrayList<PackedTransaction> myDataset){
         mDataset = myDataset;
     }
 
@@ -55,8 +49,16 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
     }
 
     public void onBindViewHolder(RecycleViewAdapterOrderList.MyViewHolder holder, int position){
-        holder.tvLaundryName.setText(mDataset.get(position).getOutlet().getName());
-        holder.tvOrderNumber.setText(mDataset.get(position).getPoNumber());
+        if(mDataset.get(position).getName() == null)
+            holder.tvLaundryName.setText("Undefined Name");
+        else
+            holder.tvLaundryName.setText(mDataset.get(position).getName());
+
+        if(mDataset.get(position).getPONumber() == null)
+            holder.tvLaundryName.setText("Undefined PO");
+        else
+            holder.tvOrderNumber.setText(mDataset.get(position).getPONumber());
+
 
         Double price = mDataset.get(position).getPrice();
         String status = mDataset.get(position).getStatus();
@@ -64,7 +66,7 @@ public class RecycleViewAdapterOrderList extends RecyclerView.Adapter<RecycleVie
         if(price == null)
             price = 0.0;
         if(status == null)
-            status = "Calculating . . .";
+            status = "On Process";
 
         holder.tvPrice.setText("Rp. " + price.toString());
         holder.tvStatus.setText(status);

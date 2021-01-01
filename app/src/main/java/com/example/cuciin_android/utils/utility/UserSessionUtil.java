@@ -14,8 +14,8 @@ public class UserSessionUtil {
         userSessionRepositoryRepository.setSessionData(loginObj);
     }
 
-    public LoginObj getSession(){
-        return userSessionRepositoryRepository.getSessionData();
+    public UserSessionRepositoryRepository getSession(){
+        return userSessionRepositoryRepository;
     }
 
     public void updateSession(LoginObj loginObj){

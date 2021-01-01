@@ -5,29 +5,26 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
-import com.example.cuciin_android.activity.modul.nearby.LocationTrack;
 import com.example.cuciin_android.activity.modul.order.OrderActivity;
-import com.example.cuciin_android.activity.modul.orderList.OrderListActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.OutletTestObj;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
+import com.example.cuciin_android.data.model.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.utils.recycler.RecycleViewAdapterNearby;
+import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 
 import java.util.ArrayList;
@@ -80,9 +77,8 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
             }
         }
 
-        final Double lat = bestLocation.getLatitude();
-        final Double lng = bestLocation.getLongitude();
-        UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
+        Double lat = bestLocation.getLatitude();
+        Double lng = bestLocation.getLongitude();
 
         mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
 
@@ -115,7 +111,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
 
     public void viewNearby(OutletObj outletObj){
         final List<DataOutletObj> listOutlet = outletObj.getResults();
-        mPresenter.fetchLocalMaps(listOutlet, activity, UtilProvider.getUserSessionUtil().getSession().getDataObj().getToken());
+        mPresenter.fetchLocalMaps(listOutlet, activity, new UserSessionRepositoryRepository(getContext()).getDataSession().getDataObj().getToken());
     }
 
     public void showAllView(ArrayList<PackedOutlet> dataOutlet){

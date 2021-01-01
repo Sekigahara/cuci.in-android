@@ -1,27 +1,24 @@
 package com.example.cuciin_android.activity.modul.order;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
-import com.example.cuciin_android.data.model.DataLaundryType;
 import com.example.cuciin_android.data.model.LaundryType;
 import com.example.cuciin_android.data.model.Transaction;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
+import com.example.cuciin_android.data.model.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.helper.ApiGoogleService;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
+import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,22 +60,23 @@ public class OrderPresenter implements OrderContract.Presenter{
     }
 
     @Override
-    public void addTransaction(final Activity activity, final PackedOutlet packedOutlet, int[] amount, final LaundryType laundryType) {
-        int id = 0;
+    public void addTransaction(final Activity activity, final Context context, final PackedOutlet packedOutlet, int[] amount, final LaundryType laundryType) {
+        String outlet_id = null;
+        String google_id = null;
 
-        if(packedOutlet.getId() != null)
-            id = Integer.parseInt(packedOutlet.getId());
-        if(packedOutlet.getIdGoogle() != null)
-            id = Integer.parseInt(packedOutlet.getIdGoogle());
+        outlet_id = packedOutlet.getId();
+        google_id = packedOutlet.getIdGoogle();
 
-        LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
+        LoginObj loginObj = new UserSessionRepositoryRepository(context).getDataSession();
         mApiService = UtilsApi.getLocalAPIService();
         Log.d("laundry type", String.valueOf(laundryType));
-        Call<Transaction> call = mApiService.addLundryTransaction(
+        Call<Transaction> call = mApiService.addLaundryTransaction(
                 "Bearer " + loginObj.getDataObj().getToken(),
                 String.valueOf(packedOutlet.getName()),
                 new Gson().toJson(laundryType),
-                id
+                outlet_id,
+                google_id,
+                "Picking Up!"
         );
         call.enqueue(new Callback<Transaction>() {
             @Override
@@ -88,11 +86,11 @@ public class OrderPresenter implements OrderContract.Presenter{
                     if(transaction != null && transaction.getSuccess()){
                         Toast.makeText(activity, "Transaction Added", Toast.LENGTH_LONG).show();
 
-                        view.goToNewTask( new Intent(activity, DashboardActivity.class));
+                        view.goToNewTask(new Intent(activity, DashboardActivity.class));
                     }else
-                        Toast.makeText(activity, "Error 1 :" + response.message(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show();
                 }else
-                    Toast.makeText(activity, "Error 2 :" + response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "error 2" + response.errorBody(), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -103,9 +101,9 @@ public class OrderPresenter implements OrderContract.Presenter{
     }
 
     @Override
-    public void orderItem(final Activity activity) {
-        LoginObj loginObj = UtilProvider.getUserSessionUtil().getSession();
-        mApiService= UtilsApi.getLocalAPIService();
+    public void orderItem(final Activity activity, final Context context) {
+        LoginObj loginObj = new UserSessionRepositoryRepository(context).getDataSession();
+        mApiService = UtilsApi.getLocalAPIService();
         Call<LaundryType> call = mApiService.getLaundryTypeAll("Bearer " + loginObj.getDataObj().getToken());
         call.enqueue(new Callback<LaundryType>() {
             @Override
@@ -113,7 +111,6 @@ public class OrderPresenter implements OrderContract.Presenter{
                 if(response.isSuccessful() == true){
                     LaundryType laundryTypeAll = response.body();
                     if(laundryTypeAll.getSuccess() == true){
-                        Intent intent = new Intent(activity, OrderActivity.class);
 
                         view.viewLaundryTypeData(laundryTypeAll);
                     }else
@@ -135,5 +132,9 @@ public class OrderPresenter implements OrderContract.Presenter{
                 +"&maxheight="+height+"&photoreference="+reference+"&key="+UtilProvider.getKey();
 
         return URL;
+    }
+
+    public String settingGmapsRedirectURL(Double latitude, Double longitude, String name){
+        return "http://maps.google.com/maps?q=loc:" + latitude + "," + longitude +"(" + name + ")";
     }
 }

@@ -1,12 +1,9 @@
 package com.example.cuciin_android.activity.modul.orderList;
 
 import android.os.Bundle;
-import android.content.Intent;
 import android.view.View;
 
-import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
-import com.example.cuciin_android.data.model.Transaction;
 
 public class OrderListActivity extends BaseFragmentHolderActivity {
     OrderListFragment orderListFragment;

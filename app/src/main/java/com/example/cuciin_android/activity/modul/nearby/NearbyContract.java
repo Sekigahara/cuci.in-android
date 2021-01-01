@@ -5,8 +5,7 @@ import android.content.Intent;
 
 import com.example.cuciin_android.base.BasePresenter;
 import com.example.cuciin_android.base.BaseView;
-import com.example.cuciin_android.data.model.login.LoginObj;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
+import com.example.cuciin_android.data.model.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.data.model.outlet_local.OutletLocal;

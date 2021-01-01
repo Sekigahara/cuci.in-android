@@ -2,8 +2,8 @@
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,14 +21,9 @@ import com.example.cuciin_android.R;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.DataLaundryType;
 import com.example.cuciin_android.data.model.LaundryType;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
-import com.example.cuciin_android.data.model.outlet.DataOutletObj;
-import com.example.cuciin_android.data.model.login.LoginObj;
-import com.example.cuciin_android.utils.RecycleViewAdapterLaundryType;
-import com.example.cuciin_android.utils.utility.UtilProvider;
+import com.example.cuciin_android.data.model.PackedOutlet;
+import com.example.cuciin_android.utils.recycler.RecycleViewAdapterLaundryType;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -42,6 +38,8 @@ import java.util.List;
     private ImageView outletIcon;
     private TextView status;
     private Button buttonOrder;
+    private View cardViewLaundry;
+    private View baseView;
     int[] id;
 
     public OrderFragment(PackedOutlet packedOutlet) {
@@ -63,7 +61,7 @@ import java.util.List;
         mLayoutManager = new LinearLayoutManager(activity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mPresenter.orderItem(activity);
+        mPresenter.orderItem(activity, getContext());
         return fragmentView;
     }
 
@@ -82,13 +80,13 @@ import java.util.List;
             }
         });
 
-        buttonOrder = fragmentView.findViewById(R.id.buttonOrder);
+
+        buttonOrder = (Button) fragmentView.findViewById(R.id.buttonOrder);
 
         buttonOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final LaundryType laundryTypeYeet = laundryType;
-                mPresenter.addTransaction(activity, packedOutlet, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryTypeYeet);
+                mPresenter.addTransaction(activity, getContext(), packedOutlet, ((RecycleViewAdapterLaundryType) mAdapter).getAmount(), laundryType);
             }
         });
     }
@@ -105,6 +103,7 @@ import java.util.List;
         outletIcon = fragmentView.findViewById(R.id.imageCardProfile);
         titleOutlet = fragmentView.findViewById(R.id.textViewNamaLaundry);
         status = fragmentView.findViewById(R.id.textViewStatus);
+        cardViewLaundry = fragmentView.findViewById(R.id.background);
 
         titleOutlet.setText(packedOutlet.getName());
         rating.setText(String.valueOf(packedOutlet.getRating()));
@@ -126,6 +125,24 @@ import java.util.List;
             status.setText("Close");
             status.setBackground(redButton);
         }
+
+        cardViewLaundry.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(packedOutlet.getLat() == null || packedOutlet.getLng() == null)
+                    Toast.makeText(activity, "This Outlet Doesn't Recorded in Gmaps", Toast.LENGTH_LONG).show();
+                else{
+                    String URL =mPresenter.settingGmapsRedirectURL(
+                            packedOutlet.getLat(),
+                            packedOutlet.getLng(),
+                            packedOutlet.getName()
+                    );
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL));
+                    getContext().startActivity(intent);
+                }
+            }
+        });
     }
 
      @Override
@@ -136,6 +153,7 @@ import java.util.List;
      @Override
      public void goToNewTask(Intent intent) {
         startActivity(intent);
+        activity.finish();
      }
 
      public void setTypeLaundry(){

@@ -40,6 +40,4 @@ public class TransactionObj implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
-
-
 }

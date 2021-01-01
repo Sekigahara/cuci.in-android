@@ -9,10 +9,28 @@ import com.google.gson.Gson;
 public class UserSessionRepositoryRepository implements SessionRepository<LoginObj> {
     private static UserSessionRepositoryRepository instance;
     private static String SESSION_USER = "SessionUser";
-    private static SharedPreferences sharedPref;
+    private SharedPreferences sharedPref;
+    private Context context;
 
     public UserSessionRepositoryRepository(Context context)  {
         sharedPref = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        this.context = context;
+    }
+
+    public LoginObj getDataSession(){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        String sessionDataJson = sharedPreferences.getString(SESSION_USER, null);
+        if (sessionDataJson != null) {
+            return new Gson().fromJson(sessionDataJson, LoginObj.class);
+        }
+        return null;
+    }
+
+    public void setSessionDataUser(LoginObj sessionData){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SESSION_USER, new Gson().toJson(sessionData));
+        editor.apply();
     }
 
     @Override

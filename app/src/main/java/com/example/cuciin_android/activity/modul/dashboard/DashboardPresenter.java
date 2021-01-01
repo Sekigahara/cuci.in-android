@@ -21,7 +21,6 @@ import retrofit2.Response;
 public class DashboardPresenter implements DashboardContract.Presenter{
     private final DashboardContract.View view;
 
-
     public DashboardPresenter(DashboardContract.View view){
         this.view = view;
     }
@@ -29,37 +28,4 @@ public class DashboardPresenter implements DashboardContract.Presenter{
     public void start(){
 
     }
-
-//    public void fetchMaps(int radius, String sensor ,String types, final Double lat, final Double lng, String key, final Activity activity) {
-//        String location = lat.toString() + ", " + lng.toString();
-//        UtilProvider.initLocationSession(lat ,lng);
-//
-//        mGoogleApiService = UtilsApi.getApiService();
-//        Call<OutletObj> call = mGoogleApiService.getNearestLaundry(types, location, radius, sensor, key);
-//        call.enqueue(new Callback<OutletObj>() {
-//            @Override
-//            public void onResponse(Call<OutletObj> call, Response<OutletObj> response) {
-//                if (response.isSuccessful() == true) {
-//                    OutletObj outletObj = response.body();
-//                    if (outletObj.getStatus().equals("OK")) {
-//                        Toast.makeText(activity, "Sort by Ascending", Toast.LENGTH_LONG).show();
-//
-//                        Intent intent = new Intent(activity, NearbyActivity.class);
-//                        //intent.putExtra("session", loginObj);
-//                        intent.putExtra("outlet", outletObj);
-//
-//                        view.gotoNewTask(intent);
-//                    } else
-//                        Toast.makeText(activity, outletObj.getStatus(), Toast.LENGTH_LONG).show();
-//                } else {
-//                    Toast.makeText(activity, "Error2", Toast.LENGTH_LONG).show();
-//                }
-//            }
-
-//            @Override
-//            public void onFailure(Call call, Throwable t) {
-//                Toast.makeText(activity, t.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-//    }
 }
