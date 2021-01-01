@@ -3,12 +3,14 @@ package com.example.cuciin_android.activity.modul.login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.data.model.User;
 import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.user.UserObj;
+import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
@@ -19,7 +21,7 @@ import retrofit2.Response;
 
 public class LoginPresenter implements LoginContract.Presenter{
     private final LoginContract.View view;
-    private final Context context;
+    private Context context;
     ApiService mApiService;
 
     public LoginPresenter(LoginContract.View view, Context context){
@@ -28,9 +30,10 @@ public class LoginPresenter implements LoginContract.Presenter{
     }
 
     public void start(){
-        UtilProvider.initUserSession(this.context);
-//
-        if(UtilProvider.getUserSessionUtil().getSession() != null){
+        //UtilProvider.initUserSession(this.context);
+
+        new UserSessionRepositoryRepository(this.context);
+        if(new UserSessionRepositoryRepository(context).getDataSession()!= null){
             view.gotoDashboard();   //jika sudah login langsung masuk dashboard
         }
     }
@@ -49,7 +52,8 @@ public class LoginPresenter implements LoginContract.Presenter{
                     LoginObj loginObj = response.body();
                     if(loginObj.getSuccess() == true){
                         Toast.makeText(activity, "Login Success", Toast.LENGTH_LONG).show();
-                        UtilProvider.getUserSessionUtil().setSession(loginObj);
+                        new UserSessionRepositoryRepository(context).setSessionDataUser(loginObj);
+                        //UtilProvider.getUserSessionUtil().setSession(loginObj);
 
                         Intent intent = new Intent(activity, DashboardActivity.class);
 

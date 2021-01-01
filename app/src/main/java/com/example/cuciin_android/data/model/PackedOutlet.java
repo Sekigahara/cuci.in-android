@@ -1,4 +1,4 @@
-package com.example.cuciin_android.data.model.nearby;
+package com.example.cuciin_android.data.model;
 
 import java.io.Serializable;
 
@@ -7,9 +7,27 @@ public class PackedOutlet implements Serializable {
     private String name;
     private Float rating;
     private Boolean isOpen;
+    private Double lat;
+    private Double lng;
     private String photo;
     private String idGoogle;
     private String id;
+
+    public void setLat(Double lat){
+        this.lat = lat;
+    }
+
+    public Double getLat(){
+        return lat;
+    }
+
+    public void setLng(Double lng){
+        this.lng = lng;
+    }
+
+    public Double getLng(){
+        return lng;
+    }
 
     public Double getDistance() {
         return distance;

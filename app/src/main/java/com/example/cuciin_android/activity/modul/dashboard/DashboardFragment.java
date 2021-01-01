@@ -19,14 +19,17 @@ import com.example.cuciin_android.activity.modul.nearby.NearbyFragment;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 import com.example.cuciin_android.utils.utility.UtilProvider;
+import com.google.android.libraries.places.api.Places;
+
+import java.util.Locale;
 
 public class DashboardFragment extends BaseFragment<DashboardActivity, DashboardContract.Presenter> implements DashboardContract.View {
     UserSessionRepositoryRepository userSession;
     ImageView ivNearby;
-    ImageView ivLogout;
+    private Context context;
 
-    public DashboardFragment(){
-
+    public DashboardFragment(Context context){
+        this.context = context;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -34,6 +37,12 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
         fragmentView = inflater.inflate(R.layout.activity_dashboard, container, false);
         mPresenter = new DashboardPresenter(this);
         mPresenter.start();
+
+        UtilProvider.initKey("AIzaSyCi5K_CX39rkJPvxfULr1HZKMChpvvh1IM");
+        UtilProvider.initServerKey("AIzaSyD0_sZhy7fJoeUcIGTmkTZbl5FNxYr2N-o");
+
+        if(!Places.isInitialized())
+            Places.initialize(context, UtilProvider.getKey());
 
         ivNearby = fragmentView.findViewById(R.id.ivNearby);
         ivNearby.setOnClickListener(new View.OnClickListener(){
@@ -53,7 +62,6 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
 
     public void gotoNewTask(Intent intent){
         startActivity(intent);
-        activity.finish();
     }
 
     public void setPresenter(DashboardContract.Presenter presenter){

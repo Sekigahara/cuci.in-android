@@ -21,19 +21,16 @@ public class DataTransactionObj implements Serializable {
     private Double price;
     @SerializedName("amount")
     @Expose
-    private Double amount;
+    private Integer amount;
     @SerializedName("laundry_type")
     @Expose
     private String laundryType;
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("user_id")
+    @SerializedName("customer_id")
     @Expose
-    private Integer userId;
-    @SerializedName("outlet_id")
-    @Expose
-    private Integer outletId;
+    private Integer customerId;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -43,6 +40,12 @@ public class DataTransactionObj implements Serializable {
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
+    @SerializedName("outlet_id")
+    @Expose
+    private Object outletId;
+    @SerializedName("outlet_google_id")
+    @Expose
+    private String outletGoogleId;
     @SerializedName("customer")
     @Expose
     private Object customer;
@@ -82,11 +85,11 @@ public class DataTransactionObj implements Serializable {
         this.price = price;
     }
 
-    public Double getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
@@ -106,20 +109,12 @@ public class DataTransactionObj implements Serializable {
         this.status = status;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getOutletId() {
-        return outletId;
-    }
-
-    public void setOutletId(Integer outletId) {
-        this.outletId = outletId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getCreatedAt() {
@@ -144,6 +139,22 @@ public class DataTransactionObj implements Serializable {
 
     public void setDeletedAt(Object deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public Object getOutletId() {
+        return outletId;
+    }
+
+    public void setOutletId(Object outletId) {
+        this.outletId = outletId;
+    }
+
+    public String getOutletGoogleId() {
+        return outletGoogleId;
+    }
+
+    public void setOutletGoogleId(String outletGoogleId) {
+        this.outletGoogleId = outletGoogleId;
     }
 
     public Object getCustomer() {

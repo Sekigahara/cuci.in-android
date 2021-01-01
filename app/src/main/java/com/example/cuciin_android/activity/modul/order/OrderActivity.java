@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
-import com.example.cuciin_android.data.model.LaundryType;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
-import com.example.cuciin_android.data.model.outlet.DataOutletObj;
-import com.example.cuciin_android.data.model.login.LoginObj;
+import com.example.cuciin_android.data.model.PackedOutlet;
 
 public class OrderActivity extends BaseFragmentHolderActivity {
     OrderFragment orderFragment;
@@ -15,8 +12,8 @@ public class OrderActivity extends BaseFragmentHolderActivity {
     protected void initializeFragment() {
         initializeView();
 
-        vMenuBarShadow.setVisibility(View.VISIBLE);
-        toolbar.setVisibility(View.VISIBLE);
+        vMenuBarShadow.setVisibility(View.GONE);
+        toolbar.setVisibility(View.GONE);
         ibHome.setVisibility(View.GONE);
         ibCart.setVisibility(View.GONE);
         ibAccount.setVisibility(View.GONE);

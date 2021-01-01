@@ -1,20 +1,11 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.example.cuciin_android.activity.modul.order.OrderActivity;
-import com.example.cuciin_android.data.model.LaundryType;
-import com.example.cuciin_android.data.model.login.LoginObj;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
+import com.example.cuciin_android.data.model.PackedOutlet;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
-import com.example.cuciin_android.data.model.outlet_local.DataOutletLocal;
 import com.example.cuciin_android.data.model.outlet_local.OutletLocal;
 import com.example.cuciin_android.helper.ApiGoogleService;
 import com.example.cuciin_android.helper.ApiService;
@@ -24,10 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -60,13 +48,11 @@ public class NearbyPresenter implements NearbyContract.Presenter {
                 if (response.isSuccessful() == true) {
                     OutletObj outletObj = response.body();
                     if (outletObj.getStatus().equals("OK")) {
-                        //Toast.makeText(activity, "Sort by Ascending", Toast.LENGTH_LONG).show();
-
                         view.viewNearby(outletObj);
                     } else
                         Toast.makeText(activity, outletObj.getStatus(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(activity, "Error2", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, response.errorBody().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -88,13 +74,13 @@ public class NearbyPresenter implements NearbyContract.Presenter {
                 if (response.isSuccessful() == true) {
                     OutletLocal outletLocal = response.body();
                     if (outletLocal.getSuccess() == true) {
-                        Toast.makeText(activity, "Sort by Ascending", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(activity, "Sort by Ascending", Toast.LENGTH_LONG).show();
 
                         packingData(data, outletLocal);
                     } else
                         Toast.makeText(activity, outletLocal.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(activity, "error", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, response.errorBody().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -109,6 +95,7 @@ public class NearbyPresenter implements NearbyContract.Presenter {
         double random = new Random().nextDouble();
         ArrayList<PackedOutlet> listOutlet = new ArrayList<>();
 
+        //set outlet google
         for(int i = 0 ; i < data.size(); i++){
             PackedOutlet packedOutlet = new PackedOutlet();
 
@@ -121,12 +108,20 @@ public class NearbyPresenter implements NearbyContract.Presenter {
             Double toLng = data.get(i).getGeometry().getLocation().getLng();
             LatLng to  = new LatLng(toLat, toLng);
 
+            //set lng and lat
+            packedOutlet.setLat(data.get(i).getGeometry().getLocation().getLat());
+            packedOutlet.setLng(data.get(i).getGeometry().getLocation().getLng());
+
+            //set distance
             packedOutlet.setDistance(countDistance(from, to));
 
+            //set google id
             packedOutlet.setIdGoogle(data.get(i).getPlaceId());
             packedOutlet.setId(null);
+            //set laundry name
             packedOutlet.setName(data.get(i).getName());
 
+            //set open status
             if(data.get(i).getOpeningHours() == null)
                 packedOutlet.setOpen(false);
             else
@@ -137,13 +132,16 @@ public class NearbyPresenter implements NearbyContract.Presenter {
             else
                 packedOutlet.setPhoto(data.get(i).getPhotos().get(0).getPhotoReference());
 
+            //set rating
             packedOutlet.setRating(data.get(i).getRating());
             listOutlet.add(packedOutlet);
         }
 
+        //set outlet local
         for(int i = 0 ; i < outletLocal.getData().size(); i++){
             PackedOutlet packedOutlet = new PackedOutlet();
 
+            //set distance
             packedOutlet.setDistance(0.1 + (random * (5.8 - 0.1)));
             packedOutlet.setIdGoogle(null);
             packedOutlet.setId(outletLocal.getData().get(i).getId().toString());

@@ -6,6 +6,7 @@ import android.view.View;
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
+import com.example.cuciin_android.data.model.transaction.PackedTransaction;
 
 public class DetailActivity extends BaseFragmentHolderActivity {
     DetailFragment detailFragment;
@@ -18,9 +19,9 @@ public class DetailActivity extends BaseFragmentHolderActivity {
         ibWashmachine.setVisibility(View.VISIBLE);
 
         Bundle extras = getIntent().getExtras();
-        DataTransactionObj dataTransactionObj = (DataTransactionObj) extras.getSerializable("transaction");
+        PackedTransaction packedTransaction = (PackedTransaction) extras.getSerializable("transaction");
 
-        detailFragment = new DetailFragment(dataTransactionObj);
+        detailFragment = new DetailFragment(packedTransaction);
         setCurrentFragment(detailFragment, true);
     }
 

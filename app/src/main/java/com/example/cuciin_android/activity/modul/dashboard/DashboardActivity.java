@@ -19,7 +19,7 @@ public class DashboardActivity extends BaseFragmentHolderActivity {
         ibAccount.setVisibility(View.VISIBLE);
         ibWashmachine.setVisibility(View.VISIBLE);
 
-        dashboardFragment = new DashboardFragment();
+        dashboardFragment = new DashboardFragment(getApplicationContext());
         setCurrentFragment(dashboardFragment, true);
     }
 

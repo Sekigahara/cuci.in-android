@@ -12,15 +12,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
-import com.example.cuciin_android.data.model.nearby.PackedOutlet;
-import com.example.cuciin_android.data.model.outlet.DataOutletObj;
+import com.example.cuciin_android.data.model.PackedOutlet;
 import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecycleViewAdapterNearby extends RecyclerView.Adapter<RecycleViewAdapterNearby.MyViewHolder>{
     private static ArrayList<PackedOutlet> mDataset;

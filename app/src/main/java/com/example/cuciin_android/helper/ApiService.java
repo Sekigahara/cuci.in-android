@@ -1,17 +1,12 @@
 package com.example.cuciin_android.helper;
 
-import com.example.cuciin_android.data.model.DataLaundryType;
 import com.example.cuciin_android.data.model.LaundryType;
 import com.example.cuciin_android.data.model.OutletTestObj;
 import com.example.cuciin_android.data.model.Transaction;
-import com.example.cuciin_android.data.model.customer.CustomerObj;
-import com.example.cuciin_android.data.model.outlet_local.DataOutletLocal;
 import com.example.cuciin_android.data.model.outlet_local.OutletLocal;
 import com.example.cuciin_android.data.model.register.RegisterObj;
 import com.example.cuciin_android.data.model.login.LoginObj;
-import com.google.gson.JsonObject;
 
-import java.util.List;
 import com.example.cuciin_android.data.model.transaction.TransactionObj;
 import com.example.cuciin_android.data.model.user.UserObj;
 
@@ -70,10 +65,12 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("transaction")
-    Call<Transaction> addLundryTransaction(
+    Call<Transaction> addLaundryTransaction(
             @Header("authorization") String token,
             @Field("address") String address,
             @Field("laundry_type") String laundry_type,
-            @Field("outlet_id") int outlet_id
-            );
+            @Field("outlet_id") String outlet_id,
+            @Field("outlet_google_id") String google_id,
+            @Field("status") String status
+    );
 }

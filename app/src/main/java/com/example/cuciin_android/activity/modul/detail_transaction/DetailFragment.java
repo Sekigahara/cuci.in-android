@@ -20,6 +20,7 @@ import com.example.cuciin_android.data.model.login.LoginObj;
 import com.example.cuciin_android.data.model.outlet.DataOutletObj;
 import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
+import com.example.cuciin_android.data.model.transaction.PackedTransaction;
 import com.example.cuciin_android.utils.recycler.RecycleViewAdapterNearby;
 
 import java.util.List;
@@ -27,14 +28,16 @@ import java.util.List;
 public class DetailFragment extends BaseFragment<DetailActivity, DetailContract.Presenter> implements DetailContract.View {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private DataTransactionObj dataTransactionObj;
+    private PackedTransaction packedTransaction;
     RecyclerView mRecyclerView;
     TextView icBtBack;
     TextView tvLaundryName;
     TextView tvLaundryLocation;
+    TextView tvTotal;
+    TextView tvPONumber;
 
-    public DetailFragment(DataTransactionObj dataTransactionObj){
-        this.dataTransactionObj = dataTransactionObj;
+    public DetailFragment(PackedTransaction packedTransaction){
+        this.packedTransaction = packedTransaction;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -50,9 +53,19 @@ public class DetailFragment extends BaseFragment<DetailActivity, DetailContract.
 
         tvLaundryName = (TextView) fragmentView.findViewById(R.id.textView_laundry_name_fill);
         tvLaundryLocation = (TextView) fragmentView.findViewById(R.id.textView_location_fill);
+        tvTotal = (TextView) fragmentView.findViewById(R.id.textView_total_fill);
+        tvPONumber = (TextView) fragmentView.findViewById(R.id.textView_nomor_order);
 
-        tvLaundryName.setText(dataTransactionObj.getOutlet().getName());
-        tvLaundryLocation.setText(dataTransactionObj.getOutlet().getAddress());
+        tvLaundryName.setText(packedTransaction.getName());
+        tvLaundryLocation.setText(packedTransaction.getAddress());
+        tvPONumber.setText("#" + packedTransaction.getPONumber());
+
+        double price;
+        if(packedTransaction.getPrice() == null)
+            price = 0.0;
+        else
+            price = packedTransaction.getPrice();
+        tvTotal.setText("Rp. " + price);
         //final List<DataOutletObj> listOutlet =outletObj.getResults();
         //mAdapter = new RecycleViewAdapterNearby(listOutlet, getResources());
         //mRecyclerView.setAdapter(mAdapter);
