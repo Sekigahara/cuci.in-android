@@ -1,5 +1,6 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -30,6 +31,8 @@ import com.example.cuciin_android.utils.utility.UtilProvider;
 import java.util.ArrayList;
 import java.util.List;
 
+import pub.devrel.easypermissions.EasyPermissions;
+
 import static android.content.Context.LOCATION_SERVICE;
 
 public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.Presenter> implements NearbyContract.View {
@@ -37,6 +40,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
     private RecyclerView.LayoutManager mLayoutManager;
     private OutletTestObj outletTestObj;
     private OutletObj outletObj;
+    private final int REQUEST_LOCATION_PERMISSION = 1;
     RecyclerView mRecyclerView;
     SearchView svNearby;
     TextView icBtBack;
@@ -59,42 +63,7 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
         mPresenter = new NearbyPresenter(this);
         mPresenter.start();
 
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
-        LocationManager mLocationManager;
-        mLocationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
-        List<String> providers = mLocationManager.getProviders(true);
-        Location bestLocation = null;
-        for (String provider : providers) {
-            Location l = mLocationManager.getLastKnownLocation(provider);
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
-                bestLocation = l;
-            }
-        }
-
-        Double lat = bestLocation.getLatitude();
-        Double lng = bestLocation.getLongitude();
-
-        mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
-
-        mRecyclerView = fragmentView.findViewById(R.id.rvNearby);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(activity);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        svNearby = fragmentView.findViewById(R.id.svNearby);
-        icBtBack = fragmentView.findViewById(R.id.icBtBack);
-
-        icBtBack.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                gotoNewTask(new Intent(activity, DashboardActivity.class));
-            }
-        });
+        requestLocationPermission();
 
         /*
         ((RecycleViewAdapterNearby) mAdapter).setOnItemClickListener(new RecycleViewAdapterNearby.MyClickListener() {
@@ -106,7 +75,59 @@ public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.
             }
         });
         */
+
         return fragmentView;
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permission, int[] grantResult){
+        super.onRequestPermissionsResult(requestCode, permission, grantResult);
+
+        //forward to easy permission lib
+        EasyPermissions.onRequestPermissionsResult(requestCode, permission, grantResult, this);
+    }
+
+    public void requestLocationPermission(){
+        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION};
+        if(EasyPermissions.hasPermissions(getContext(), perms)){
+            LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            boolean statusOfGPS = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+            LocationManager mLocationManager;
+            mLocationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
+            List<String> providers = mLocationManager.getProviders(true);
+            Location bestLocation = null;
+            for (String provider : providers) {
+                Location l = mLocationManager.getLastKnownLocation(provider);
+                if (l == null) {
+                    continue;
+                }
+                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                    // Found best last known location: %s", l);
+                    bestLocation = l;
+                }
+            }
+
+            Double lat = bestLocation.getLatitude();
+            Double lng = bestLocation.getLongitude();
+
+            mPresenter.fetchMaps(1500, "false","laundry",lat, lng,UtilProvider.getKey(), activity);
+
+            mRecyclerView = fragmentView.findViewById(R.id.rvNearby);
+            mRecyclerView.setHasFixedSize(true);
+            mLayoutManager = new LinearLayoutManager(activity);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            svNearby = fragmentView.findViewById(R.id.svNearby);
+            icBtBack = fragmentView.findViewById(R.id.icBtBack);
+
+            icBtBack.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View view){
+                    gotoNewTask(new Intent(activity, DashboardActivity.class));
+                }
+            });
+        }else{
+            EasyPermissions.requestPermissions(this, "Grant Permission to Continue", REQUEST_LOCATION_PERMISSION, perms);
+        }
     }
 
     public void viewNearby(OutletObj outletObj){
