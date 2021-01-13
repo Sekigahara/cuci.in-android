@@ -1,7 +1,5 @@
 package com.example.cuciin_android.activity.modul.dashboard;
 
-import android.content.Context;
-import android.location.LocationManager;
 import android.view.View;
 
 import com.example.cuciin_android.base.BaseFragmentHolderActivity;

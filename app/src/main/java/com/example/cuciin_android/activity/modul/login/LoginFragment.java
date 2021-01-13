@@ -1,8 +1,6 @@
 package com.example.cuciin_android.activity.modul.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +16,6 @@ import com.example.cuciin_android.activity.modul.landing.LandingActivity;
 import com.example.cuciin_android.activity.modul.register.RegisterActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.data.model.User;
-import com.example.cuciin_android.data.model.login.LoginObj;
-import com.google.gson.Gson;
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements LoginContract.View {
     EditText etUsername;

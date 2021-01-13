@@ -3,15 +3,12 @@ package com.example.cuciin_android.activity.modul.login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.data.model.User;
 import com.example.cuciin_android.data.model.login.LoginObj;
-import com.example.cuciin_android.data.model.user.UserObj;
 import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
-import com.example.cuciin_android.utils.utility.UtilProvider;
 import com.example.cuciin_android.helper.ApiService;
 import com.example.cuciin_android.helper.UtilsApi;
 

@@ -1,13 +1,10 @@
 package com.example.cuciin_android.base;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.cuciin_android.R;
