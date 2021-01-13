@@ -1,9 +1,7 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,13 +26,10 @@ import com.example.cuciin_android.data.model.outlet.OutletObj;
 import com.example.cuciin_android.utils.recycler.RecycleViewAdapterNearby;
 import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
 import com.example.cuciin_android.utils.utility.UtilProvider;
+import com.google.android.gms.maps.model.Dash;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import pub.devrel.easypermissions.EasyPermissions;
-
-import static android.content.Context.LOCATION_SERVICE;
 
 public class NearbyFragment extends BaseFragment<NearbyActivity, NearbyContract.Presenter> implements NearbyContract.View {
     private RecyclerView.Adapter mAdapter;

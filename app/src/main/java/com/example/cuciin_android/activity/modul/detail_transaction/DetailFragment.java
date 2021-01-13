@@ -5,25 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuciin_android.R;
-import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
 import com.example.cuciin_android.activity.modul.orderList.OrderListActivity;
 import com.example.cuciin_android.base.BaseFragment;
-import com.example.cuciin_android.data.model.OutletTestObj;
-import com.example.cuciin_android.data.model.login.LoginObj;
-import com.example.cuciin_android.data.model.outlet.DataOutletObj;
-import com.example.cuciin_android.data.model.outlet.OutletObj;
-import com.example.cuciin_android.data.model.transaction.DataTransactionObj;
 import com.example.cuciin_android.data.model.transaction.PackedTransaction;
-import com.example.cuciin_android.utils.recycler.RecycleViewAdapterNearby;
-
-import java.util.List;
 
 public class DetailFragment extends BaseFragment<DetailActivity, DetailContract.Presenter> implements DetailContract.View {
     private RecyclerView.Adapter mAdapter;
