@@ -10,7 +10,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="414dp"
         android:layout_height="275dp"
-        android:background="@drawable/background_dashboard"
+        android:background="@drawable/background_dashboard_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/nearby_btn" />
+        android:src="@drawable/nearby_button"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -76,7 +76,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/popular_btn" />
+        android:src="@drawable/popular_button"/>
 
     <ImageView
         android:id="@+id/imageView3"
@@ -86,7 +86,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toEndOf="@+id/ivNearby"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/discount_btn" />
+        android:src="@drawable/discount_button"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -95,7 +95,7 @@
         android:layout_marginStart="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/nonstop" />
+        android:src="@drawable/nonstop_1"/>
 
     <ImageView
         android:id="@+id/imageView5"
@@ -104,7 +104,7 @@
         android:layout_marginStart="6dp"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/ivNearby"
-        app:srcCompat="@drawable/free_deliv_btn" />
+        android:src="@drawable/free_deliv_button"/>
 
     <ImageView
         android:id="@+id/imageView6"
@@ -113,7 +113,7 @@
         android:layout_marginStart="6dp"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/all_list_btn" />
+        android:src="@drawable/all_list_button"/>
 
     <TextView
         android:id="@+id/textView31"
@@ -135,6 +135,6 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31"
-        app:srcCompat="@drawable/best_deals" />
+        android:src="@drawable/best_deals_1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
