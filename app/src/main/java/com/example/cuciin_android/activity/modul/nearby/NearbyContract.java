@@ -22,7 +22,7 @@ public interface NearbyContract {
     }
 
     interface Presenter extends BasePresenter {
-        void fetchMaps(int radius, String sensor, String types, Double lat, Double lng, String key, final Activity activity);
+        void fetchMaps(int radius, String sensor, String types, String key, final Activity activity);
         void fetchLocalMaps(List<DataOutletObj> data, final Activity activity, final String token);
         void packingData(final List<DataOutletObj> data, OutletLocal outletLocal);
         ArrayList<PackedOutlet> sortByAscending(ArrayList<PackedOutlet> data);

@@ -1,6 +1,9 @@
 package com.example.cuciin_android.activity.modul.nearby;
 
 import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.widget.Toast;
 
 import com.example.cuciin_android.data.model.PackedOutlet;
@@ -22,6 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.LOCATION_SERVICE;
+
 public class NearbyPresenter implements NearbyContract.Presenter {
     private final NearbyContract.View view;
     ApiService mApiService;
@@ -35,7 +40,25 @@ public class NearbyPresenter implements NearbyContract.Presenter {
 
     }
 
-    public void fetchMaps(int radius, String sensor ,String types, final Double lat, final Double lng, String key, final Activity activity) {
+    public void fetchMaps(int radius, String sensor ,String types, String key, final Activity activity) {
+        LocationManager mLocationManager;
+        mLocationManager = (LocationManager) activity.getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location l = mLocationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+
+        Double lat = bestLocation.getLatitude();
+        Double lng = bestLocation.getLongitude();
+
         String location = lat.toString() + ", " + lng.toString();
         UtilProvider.initLocationSession(lat ,lng);
 
@@ -50,9 +73,9 @@ public class NearbyPresenter implements NearbyContract.Presenter {
                     if (outletObj.getStatus().equals("OK")) {
                         view.viewNearby(outletObj);
                     } else
-                        Toast.makeText(activity, outletObj.getStatus(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, "error 1 : " + outletObj.getStatus(), Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(activity, response.errorBody().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "error 2 : " +response.errorBody().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
