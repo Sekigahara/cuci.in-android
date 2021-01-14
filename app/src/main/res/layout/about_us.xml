@@ -69,6 +69,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toTopOf="@id/subSponsored"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -91,7 +92,6 @@
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
                         android:contentDescription="Ilham"
-                        android:src="@drawable/ilham"
                         app:layout_constraintEnd_toStartOf="@id/ivDevAndro"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvDevLabel" />
@@ -112,7 +112,6 @@
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
                         android:contentDescription="Andro"
-                        android:src="@drawable/andro"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivDevIlham"
                         app:layout_constraintTop_toBottomOf="@id/tvDevLabel" />
@@ -133,7 +132,6 @@
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
                         android:contentDescription="Ekky"
-                        android:src="@drawable/ekky"
                         app:layout_constraintEnd_toStartOf="@+id/ivDevTude"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvDevIlham" />
@@ -144,7 +142,6 @@
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
                         android:contentDescription="Tude"
-                        android:src="@drawable/tude"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivDevEkky"
                         app:layout_constraintTop_toBottomOf="@id/tvDevAndro" />
@@ -175,9 +172,8 @@
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
                         android:contentDescription="Rissa"
-                        android:src="@drawable/rissa"
-                        app:layout_constraintStart_toEndOf="@id/ivDevDarry"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivDevDarry"
                         app:layout_constraintTop_toBottomOf="@id/tvDevEkky" />
 
                     <ImageView
@@ -185,8 +181,7 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_marginTop="16dp"
-                        android:contentDescription="Darry"
-                        android:src="@drawable/darry"
+                        android:contentDescription="Dary"
                         app:layout_constraintEnd_toStartOf="@id/ivDevRissa"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvDevTude" />
@@ -237,7 +232,6 @@
                         android:id="@+id/ivVirtuaHive"
                         android:layout_width="140dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/logo_virtuahive"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivRasyidTech"
                         app:layout_constraintTop_toBottomOf="@id/tvSponsored"/>
@@ -245,7 +239,6 @@
                         android:id="@+id/ivRasyidTech"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/logo_rasyidtechnologies"
                         app:layout_constraintStart_toEndOf="@id/ivVirtuaHive"
                         app:layout_constraintTop_toBottomOf="@id/tvSponsored"
                         app:layout_constraintEnd_toEndOf="parent"/>
@@ -253,7 +246,6 @@
                         android:id="@+id/ivMaulidanGames"
                         android:layout_width="160dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/logo_maulidangames"
                         app:layout_constraintStart_toEndOf="@id/ivPTI"
                         app:layout_constraintTop_toBottomOf="@id/ivVirtuaHive"
                         app:layout_constraintEnd_toEndOf="parent"/>
@@ -291,7 +283,6 @@
                         android:layout_width="100dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/logo_sindika"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivRasyidInst"
                         app:layout_constraintTop_toBottomOf="@id/tvSupported"/>
@@ -300,7 +291,6 @@
                         android:layout_width="140dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="8dp"
-                        android:src="@drawable/logo_rasyidinstitute"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivSindika"
                         app:layout_constraintTop_toBottomOf="@id/tvSupported"/>
@@ -308,7 +298,6 @@
                         android:id="@+id/ivTrustMedis"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/trustmedis"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivProfilku"
                         app:layout_constraintTop_toBottomOf="@id/ivSindika"/>
@@ -316,7 +305,6 @@
                         android:id="@+id/ivProfilku"
                         android:layout_width="80dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/logo_profilku"
                         android:layout_marginTop="16dp"
                         app:layout_constraintStart_toEndOf="@id/ivTrustMedis"
                         app:layout_constraintEnd_toStartOf="@id/ivAlterra"
@@ -325,7 +313,6 @@
                         android:id="@+id/ivAlterra"
                         android:layout_width="120dp"
                         android:layout_height="45dp"
-                        android:src="@drawable/alterra"
                         android:layout_marginTop="4dp"
                         app:layout_constraintStart_toEndOf="@id/ivProfilku"
                         app:layout_constraintEnd_toEndOf="parent"
