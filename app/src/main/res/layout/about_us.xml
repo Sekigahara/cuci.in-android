@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pageProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:id="@+id/topNav"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="About Us"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            app:layout_constraintTop_toBottomOf="@id/topNav"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/subDevTeam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/subSponsored"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvDevLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Developer Team"
+                        android:textColor="#3C3c3c"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivDevIlham"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Ilham"
+                        app:layout_constraintEnd_toStartOf="@id/ivDevAndro"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDevLabel"
+                        android:hardwareAccelerated="false"/>
+
+                    <TextView
+                        android:id="@+id/tvDevIlham"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Ilham"
+                        app:layout_constraintEnd_toEndOf="@id/ivDevIlham"
+                        app:layout_constraintStart_toStartOf="@id/ivDevIlham"
+                        app:layout_constraintTop_toBottomOf="@id/ivDevIlham" />
+
+                    <ImageView
+                        android:id="@+id/ivDevAndro"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Andro"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivDevIlham"
+                        app:layout_constraintTop_toBottomOf="@id/tvDevLabel"
+                        android:hardwareAccelerated="false"/>
+
+                    <TextView
+                        android:id="@+id/tvDevAndro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Andro"
+                        app:layout_constraintEnd_toEndOf="@id/ivDevAndro"
+                        app:layout_constraintStart_toStartOf="@id/ivDevAndro"
+                        app:layout_constraintTop_toBottomOf="@id/ivDevAndro" />
+
+                    <ImageView
+                        android:id="@+id/ivDevEkky"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Ekky"
+                        app:layout_constraintEnd_toStartOf="@+id/ivDevTude"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDevIlham"
+                        android:hardwareAccelerated="false"/>
+
+                    <ImageView
+                        android:id="@+id/ivDevTude"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Tude"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivDevEkky"
+                        app:layout_constraintTop_toBottomOf="@id/tvDevAndro"
+                        android:hardwareAccelerated="false"/>
+
+                    <TextView
+                        android:id="@+id/tvDevEkky"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Ekky"
+                        app:layout_constraintEnd_toEndOf="@id/ivDevEkky"
+                        app:layout_constraintStart_toStartOf="@id/ivDevEkky"
+                        app:layout_constraintTop_toBottomOf="@id/ivDevEkky"
+                        android:hardwareAccelerated="false"/>
+
+                    <TextView
+                        android:id="@+id/tvDevTude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Tude"
+                        app:layout_constraintEnd_toEndOf="@id/ivDevTude"
+                        app:layout_constraintStart_toStartOf="@id/ivDevTude"
+                        app:layout_constraintTop_toBottomOf="@id/ivDevTude" />
+
+                    <ImageView
+                        android:id="@+id/ivDevRissa"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Rissa"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivDevDarry"
+                        app:layout_constraintTop_toBottomOf="@id/tvDevEkky"
+                        android:hardwareAccelerated="false"/>
+
+                    <ImageView
+                        android:id="@+id/ivDevDarry"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="Dary"
+                        app:layout_constraintEnd_toStartOf="@id/ivDevRissa"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDevTude"
+                        android:hardwareAccelerated="false"/>
+
+                    <TextView
+                        android:id="@+id/tvDevRissa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Rissa"
+                        app:layout_constraintEnd_toEndOf="@id/ivDevRissa"
+                        app:layout_constraintStart_toStartOf="@id/ivDevRissa"
+                        app:layout_constraintTop_toBottomOf="@id/ivDevRissa" />
+
+                    <TextView
+                        android:id="@+id/tvDevDarry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Darry"
+                        app:layout_constraintEnd_toEndOf="@id/ivDevDarry"
+                        app:layout_constraintStart_toStartOf="@id/ivDevDarry"
+                        app:layout_constraintTop_toBottomOf="@id/ivDevDarry" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/subSponsored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toTopOf="@id/subSupported"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subDevTeam">
+
+                    <TextView
+                        android:id="@+id/tvSponsored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Sponsored By"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivVirtuaHive"
+                        android:layout_width="140dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintEnd_toStartOf="@id/ivRasyidTech"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSponsored"
+                        android:hardwareAccelerated="false"/>
+
+                    <ImageView
+                        android:id="@+id/ivRasyidTech"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivVirtuaHive"
+                        app:layout_constraintTop_toBottomOf="@id/tvSponsored"
+                        android:hardwareAccelerated="false"/>
+
+                    <ImageView
+                        android:id="@+id/ivMaulidanGames"
+                        android:layout_width="160dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivPTI"
+                        app:layout_constraintTop_toBottomOf="@id/ivVirtuaHive"
+                        android:hardwareAccelerated="false"/>
+
+                    <ImageView
+                        android:id="@+id/ivPTI"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/logo_pti"
+                        app:layout_constraintEnd_toStartOf="@id/ivMaulidanGames"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivVirtuaHive"
+                        android:hardwareAccelerated="false" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/subSupported"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subSponsored"
+                    app:layout_constraintBottom_toTopOf="@id/subSupervisorsMentors">
+                    <TextView
+                        android:id="@+id/tvSupported"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Supported By"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <ImageView
+                        android:id="@+id/ivSindika"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivRasyidInst"
+                        app:layout_constraintTop_toBottomOf="@id/tvSupported"
+                        android:hardwareAccelerated="false"/>
+                    <ImageView
+                        android:id="@+id/ivRasyidInst"
+                        android:layout_width="140dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivSindika"
+                        app:layout_constraintTop_toBottomOf="@id/tvSupported"
+                        android:hardwareAccelerated="false"/>
+                    <ImageView
+                        android:id="@+id/ivTrustMedis"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivProfilku"
+                        app:layout_constraintTop_toBottomOf="@id/ivSindika"
+                        android:hardwareAccelerated="false"/>
+                    <ImageView
+                        android:id="@+id/ivProfilku"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toEndOf="@id/ivTrustMedis"
+                        app:layout_constraintEnd_toStartOf="@id/ivAlterra"
+                        app:layout_constraintTop_toBottomOf="@id/ivSindika"
+                        android:hardwareAccelerated="false"/>
+                    <ImageView
+                        android:id="@+id/ivAlterra"
+                        android:layout_width="120dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@id/ivProfilku"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivSindika"
+                        android:hardwareAccelerated="false"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/subSupervisorsMentors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subSupported">
+                    <TextView
+                        android:id="@+id/tvSupervisorsMentors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suppervisors and Mentors"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutSup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSupervisorsMentors">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Umi Sa'adah" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Desy Intan Permatasari" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Andhik Ampuh Yunanto" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Maulidan Bagus Afridian Rasyid" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Willy Achmat Fauzi" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Verent Flourencia Irene" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mayshella Ainun Wakhidah" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Andika Ahmad Ramadhan" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fandi Ahmad" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ardian Kristya Pratama" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Angga Pradipta Kurnia Putra" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Muhammad Alif Pradipta ADP" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rafly Arief Kanza" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ahmad Jarir At Thobari" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ajie Dibyo Respati" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Achmad Zulkarnain" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Arie Affianto" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tegar Imansyah" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="32dp"
+                    android:text="Terima Kasih"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subSupervisorsMentors"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

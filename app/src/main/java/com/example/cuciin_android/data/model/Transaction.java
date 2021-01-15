@@ -1,89 +1,43 @@
 package com.example.cuciin_android.data.model;
 
-public class Transaction {
-    private int id;
-    private String po_number;
-    private String address;
-    private float price;
-    private float amount;
-    private int laundry_type;
-    private String status;
-    private int customer_id;
-    private int outlet_id;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public Transaction(){
+import java.io.Serializable;
 
+public class Transaction implements Serializable {
+
+    @Expose
+    @SerializedName("message")
+    private String message;
+    @Expose
+    @SerializedName("data")
+    private DataTransactionObj data;
+    @Expose
+    @SerializedName("success")
+    private boolean success;
+
+    public String getMessage() {
+        return message;
     }
 
-    public int getId() {
-        return id;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public DataTransactionObj getData() {
+        return data;
     }
 
-    public String getPo_number() {
-        return po_number;
+    public void setData(DataTransactionObj data) {
+        this.data = data;
     }
 
-    public void setPo_number(String po_number) {
-        this.po_number = po_number;
+    public boolean getSuccess() {
+        return success;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public int getLaundry_type() {
-        return laundry_type;
-    }
-
-    public void setLaundry_type(int laundry_type) {
-        this.laundry_type = laundry_type;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
-
-    public int getOutlet_id() {
-        return outlet_id;
-    }
-
-    public void setOutlet_id(int outlet_id) {
-        this.outlet_id = outlet_id;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 }

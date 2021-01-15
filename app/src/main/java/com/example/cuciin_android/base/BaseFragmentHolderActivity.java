@@ -1,45 +1,62 @@
 package com.example.cuciin_android.base;
 
+import android.content.Intent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.dashboard.DashboardActivity;
+import com.example.cuciin_android.activity.modul.orderList.OrderListActivity;
 
 
 public abstract class BaseFragmentHolderActivity extends BaseActivity {
 
-    protected TextView tvToolbarTitle;
-    protected FrameLayout flFragmentContainer;
-    protected ImageButton btOptionMenu;
-    protected ImageView ivIcon;
-    protected ImageButton btBack;
+    protected Toolbar toolbar;
+    protected ImageButton ibHome;
+    protected ImageButton ibCart;
+    protected ImageButton ibWashmachine;
+    protected ImageButton ibAccount;
     protected View vMenuBarShadow;
     protected RelativeLayout rlActivityFragmentHolder;
 
     @Override
     protected void initializeView() {
-        /*
         setContentView(R.layout.base_activity);
-        tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarTitle);
-        flFragmentContainer = (FrameLayout) findViewById(R.id.flFragmentContainer);
-        btOptionMenu = (ImageButton) findViewById(R.id.btOptionMenu);
-        ivIcon = (ImageView) findViewById(R.id.ivIcon);
-        btBack = (ImageButton) findViewById(R.id.btBack);
+        toolbar = (Toolbar) findViewById(R.id.bottomToolbar);
+        ibHome = (ImageButton) findViewById(R.id.ibHome);
+        ibCart = (ImageButton) findViewById(R.id.ibCart);
+        ibWashmachine = (ImageButton) findViewById(R.id.ibWashmachine);
+        ibAccount = (ImageButton) findViewById(R.id.ibAccount);
         vMenuBarShadow = findViewById(R.id.vMenuBarShadow);
         rlActivityFragmentHolder = (RelativeLayout) findViewById(R.id.rlActivityFragmentHolder);
 
-        btBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view ) {
-                onBackPressed();
+        ibCart.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getBaseContext(), OrderListActivity.class);
+                startActivity(intent);
             }
         });
-         */
-    }
 
-    public void setTitle(String title) {
-        //this.tvToolbarTitle.setText(title);
+        ibHome.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibWashmachine.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+
+            }
+        });
+
+        ibAccount.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+
+            }
+        });
     }
 }
