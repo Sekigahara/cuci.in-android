@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/pageProfile"
         android:layout_width="match_parent"
@@ -94,7 +94,8 @@
                         android:contentDescription="Ilham"
                         app:layout_constraintEnd_toStartOf="@id/ivDevAndro"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvDevLabel" />
+                        app:layout_constraintTop_toBottomOf="@id/tvDevLabel"
+                        android:hardwareAccelerated="false"/>
 
                     <TextView
                         android:id="@+id/tvDevIlham"
@@ -114,7 +115,8 @@
                         android:contentDescription="Andro"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivDevIlham"
-                        app:layout_constraintTop_toBottomOf="@id/tvDevLabel" />
+                        app:layout_constraintTop_toBottomOf="@id/tvDevLabel"
+                        android:hardwareAccelerated="false"/>
 
                     <TextView
                         android:id="@+id/tvDevAndro"
@@ -134,7 +136,8 @@
                         android:contentDescription="Ekky"
                         app:layout_constraintEnd_toStartOf="@+id/ivDevTude"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvDevIlham" />
+                        app:layout_constraintTop_toBottomOf="@id/tvDevIlham"
+                        android:hardwareAccelerated="false"/>
 
                     <ImageView
                         android:id="@+id/ivDevTude"
@@ -144,7 +147,8 @@
                         android:contentDescription="Tude"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivDevEkky"
-                        app:layout_constraintTop_toBottomOf="@id/tvDevAndro" />
+                        app:layout_constraintTop_toBottomOf="@id/tvDevAndro"
+                        android:hardwareAccelerated="false"/>
 
                     <TextView
                         android:id="@+id/tvDevEkky"
@@ -154,7 +158,8 @@
                         android:text="Ekky"
                         app:layout_constraintEnd_toEndOf="@id/ivDevEkky"
                         app:layout_constraintStart_toStartOf="@id/ivDevEkky"
-                        app:layout_constraintTop_toBottomOf="@id/ivDevEkky" />
+                        app:layout_constraintTop_toBottomOf="@id/ivDevEkky"
+                        android:hardwareAccelerated="false"/>
 
                     <TextView
                         android:id="@+id/tvDevTude"
@@ -174,7 +179,8 @@
                         android:contentDescription="Rissa"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivDevDarry"
-                        app:layout_constraintTop_toBottomOf="@id/tvDevEkky" />
+                        app:layout_constraintTop_toBottomOf="@id/tvDevEkky"
+                        android:hardwareAccelerated="false"/>
 
                     <ImageView
                         android:id="@+id/ivDevDarry"
@@ -184,7 +190,8 @@
                         android:contentDescription="Dary"
                         app:layout_constraintEnd_toStartOf="@id/ivDevRissa"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvDevTude" />
+                        app:layout_constraintTop_toBottomOf="@id/tvDevTude"
+                        android:hardwareAccelerated="false"/>
 
                     <TextView
                         android:id="@+id/tvDevRissa"
@@ -212,11 +219,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/subDevTeam"
                     app:layout_constraintBottom_toTopOf="@id/subSupported"
-                    >
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subDevTeam">
+
                     <TextView
                         android:id="@+id/tvSponsored"
                         android:layout_width="wrap_content"
@@ -225,39 +233,49 @@
                         android:text="Sponsored By"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <ImageView
                         android:id="@+id/ivVirtuaHive"
                         android:layout_width="140dp"
                         android:layout_height="60dp"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivRasyidTech"
-                        app:layout_constraintTop_toBottomOf="@id/tvSponsored"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSponsored"
+                        android:hardwareAccelerated="false"/>
+
                     <ImageView
                         android:id="@+id/ivRasyidTech"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivVirtuaHive"
                         app:layout_constraintTop_toBottomOf="@id/tvSponsored"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        android:hardwareAccelerated="false"/>
+
                     <ImageView
                         android:id="@+id/ivMaulidanGames"
                         android:layout_width="160dp"
                         android:layout_height="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivPTI"
                         app:layout_constraintTop_toBottomOf="@id/ivVirtuaHive"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        android:hardwareAccelerated="false"/>
+
                     <ImageView
                         android:id="@+id/ivPTI"
                         android:layout_width="100dp"
                         android:layout_height="60dp"
                         android:src="@drawable/logo_pti"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivMaulidanGames"
-                        app:layout_constraintTop_toBottomOf="@id/ivVirtuaHive"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivVirtuaHive"
+                        android:hardwareAccelerated="false" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/subSupported"
                     android:layout_width="match_parent"
@@ -285,7 +303,8 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivRasyidInst"
-                        app:layout_constraintTop_toBottomOf="@id/tvSupported"/>
+                        app:layout_constraintTop_toBottomOf="@id/tvSupported"
+                        android:hardwareAccelerated="false"/>
                     <ImageView
                         android:id="@+id/ivRasyidInst"
                         android:layout_width="140dp"
@@ -293,14 +312,16 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ivSindika"
-                        app:layout_constraintTop_toBottomOf="@id/tvSupported"/>
+                        app:layout_constraintTop_toBottomOf="@id/tvSupported"
+                        android:hardwareAccelerated="false"/>
                     <ImageView
                         android:id="@+id/ivTrustMedis"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivProfilku"
-                        app:layout_constraintTop_toBottomOf="@id/ivSindika"/>
+                        app:layout_constraintTop_toBottomOf="@id/ivSindika"
+                        android:hardwareAccelerated="false"/>
                     <ImageView
                         android:id="@+id/ivProfilku"
                         android:layout_width="80dp"
@@ -308,7 +329,8 @@
                         android:layout_marginTop="16dp"
                         app:layout_constraintStart_toEndOf="@id/ivTrustMedis"
                         app:layout_constraintEnd_toStartOf="@id/ivAlterra"
-                        app:layout_constraintTop_toBottomOf="@id/ivSindika"/>
+                        app:layout_constraintTop_toBottomOf="@id/ivSindika"
+                        android:hardwareAccelerated="false"/>
                     <ImageView
                         android:id="@+id/ivAlterra"
                         android:layout_width="120dp"
@@ -316,7 +338,8 @@
                         android:layout_marginTop="4dp"
                         app:layout_constraintStart_toEndOf="@id/ivProfilku"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivSindika"/>
+                        app:layout_constraintTop_toBottomOf="@id/ivSindika"
+                        android:hardwareAccelerated="false"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/subSupervisorsMentors"

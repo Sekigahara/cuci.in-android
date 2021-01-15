@@ -61,21 +61,19 @@ public class AboutUsFragment extends BaseFragment<AboutUsActivity, AboutUsContra
         ivRissa = (ImageView) fragmentView.findViewById(R.id.ivDevRissa);
         ivEkky = (ImageView) fragmentView.findViewById(R.id.ivDevEkky);
 
-        //compress
-        Bitmap andro = mPresenter.compressImages(getContext(), R.drawable.andro, 120, 120);
-        Bitmap ilham = mPresenter.compressImages(getContext(), R.drawable.ilham, 120, 120);
-        Bitmap tude = mPresenter.compressImages(getContext(), R.drawable.tude, 120, 120);
-        Bitmap darry = mPresenter.compressImages(getContext(), R.drawable.darry, 120, 120);
-        Bitmap rissa = mPresenter.compressImages(getContext(), R.drawable.rissa, 120, 120);
-        Bitmap ekky = mPresenter.compressImages(getContext(), R.drawable.ekky, 120, 120);
-
-        //set image
-        ivAndro.setImageBitmap(andro);
-        ivEkky.setImageBitmap(ekky);
-        ivTude.setImageBitmap(tude);
-        ivRissa.setImageBitmap(rissa);
-        ivDary.setImageBitmap(darry);
-        ivIlham.setImageBitmap(ilham);
+        Bitmap data;
+        data = mPresenter.compressImages(getContext(), R.drawable.andro, 120, 120);
+        ivAndro.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.ekky, 120, 120);
+        ivEkky.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.tude, 120, 120);
+        ivTude.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.darry, 120, 120);
+        ivDary.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.rissa, 120, 120);
+        ivRissa.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.ilham, 120, 120);
+        ivIlham.setImageBitmap(data);
     }
 
     private void setSponsoredResource(){
@@ -84,13 +82,12 @@ public class AboutUsFragment extends BaseFragment<AboutUsActivity, AboutUsContra
         ImageView ivMaulidanGames = (ImageView) fragmentView.findViewById(R.id.ivMaulidanGames);
         ImageView ivRasyidTech = (ImageView) fragmentView.findViewById(R.id.ivRasyidTech);
 
-        Bitmap virtuaHive = mPresenter.compressImages(getContext(), R.drawable.logo_virtuahive, 140, 60);
-        Bitmap maulidanGames = mPresenter.compressImages(getContext(), R.drawable.logo_maulidangames, 140, 60);
-        Bitmap rasyidTechnologies = mPresenter.compressImages(getContext(), R.drawable.logo_rasyidtechnologies, 140, 60);
-
-        ivVirtuaHive.setImageBitmap(virtuaHive);
-        ivMaulidanGames.setImageBitmap(maulidanGames);
-        ivRasyidTech.setImageBitmap(rasyidTechnologies);
+        Bitmap data = mPresenter.compressImages(getContext(), R.drawable.logo_virtuahive, 140, 60);
+        ivVirtuaHive.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.logo_maulidangames, 140, 60);
+        ivMaulidanGames.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.logo_rasyidtechnologies, 140, 60);
+        ivRasyidTech.setImageBitmap(data);
     }
 
     private void setSupportedResource(){
@@ -100,17 +97,16 @@ public class AboutUsFragment extends BaseFragment<AboutUsActivity, AboutUsContra
         ImageView ivProfilku = (ImageView) fragmentView.findViewById(R.id.ivProfilku);
         ImageView ivAltera = (ImageView) fragmentView.findViewById(R.id.ivAlterra);
 
-        Bitmap sindika = mPresenter.compressImages(getContext(), R.drawable.logo_sindika, 140, 60);
-        Bitmap rasyid = mPresenter.compressImages(getContext(), R.drawable.logo_rasyidinstitute, 140, 60);
-        Bitmap trustmedis = mPresenter.compressImages(getContext(), R.drawable.trustmedis, 140, 60);
-        Bitmap profilku = mPresenter.compressImages(getContext(), R.drawable.logo_profilku, 140, 60);
-        Bitmap altera = mPresenter.compressImages(getContext(), R.drawable.alterra, 140, 60);
-
-        ivSindika.setImageBitmap(sindika);
-        ivRasyid.setImageBitmap(rasyid);
-        ivTrustMedis.setImageBitmap(trustmedis);
-        ivProfilku.setImageBitmap(profilku);
-        ivAltera.setImageBitmap(altera);
+        Bitmap data = mPresenter.compressImages(getContext(), R.drawable.logo_sindika, 140, 60);
+        ivSindika.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.logo_rasyidinstitute, 140, 60);
+        ivRasyid.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.trustmedis, 140, 60);
+        ivTrustMedis.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.logo_profilku, 140, 60);
+        ivProfilku.setImageBitmap(data);
+        data = mPresenter.compressImages(getContext(), R.drawable.alterra, 140, 60);
+        ivAltera.setImageBitmap(data);
     }
 
     public void gotoNewTask(Intent intent){
