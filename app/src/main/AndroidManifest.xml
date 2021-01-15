@@ -22,15 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.modul.landing.LandingActivity"></activity>
-        <activity android:name=".activity.modul.login.LoginActivity"></activity>
-        <activity android:name=".activity.modul.register.RegisterActivity"></activity>
-        <activity android:name=".activity.modul.dashboard.DashboardActivity"></activity>
-        <activity android:name=".activity.modul.nearby.NearbyActivity"></activity>
-        <activity android:name=".activity.modul.orderList.OrderListActivity"></activity>
-        <activity android:name=".activity.modul.order.OrderActivity"></activity>
-        <activity android:name=".activity.modul.about_us.AboutUsActivity"></activity>
-        <activity android:name=".activity.modul.detail_transaction.DetailActivity"></activity>
+        <activity android:name=".activity.modul.landing.LandingActivity" />
+        <activity android:name=".activity.modul.login.LoginActivity" />
+        <activity android:name=".activity.modul.register.RegisterActivity" />
+        <activity android:name=".activity.modul.dashboard.DashboardActivity" />
+        <activity android:name=".activity.modul.nearby.NearbyActivity" />
+        <activity android:name=".activity.modul.orderList.OrderListActivity" />
+        <activity android:name=".activity.modul.order.OrderActivity" />
+        <activity android:name=".activity.modul.about_us.AboutUsActivity" />
+        <activity android:name=".activity.modul.detail_transaction.DetailActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

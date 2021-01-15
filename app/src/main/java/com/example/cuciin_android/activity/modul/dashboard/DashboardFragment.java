@@ -1,19 +1,27 @@
 package com.example.cuciin_android.activity.modul.dashboard;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.cuciin_android.R;
+import com.example.cuciin_android.activity.modul.login.LoginActivity;
 import com.example.cuciin_android.activity.modul.nearby.NearbyActivity;
 import com.example.cuciin_android.base.BaseFragment;
 import com.example.cuciin_android.utils.session.UserSessionRepositoryRepository;
@@ -57,6 +65,32 @@ public class DashboardFragment extends BaseFragment<DashboardActivity, Dashboard
                 }else{
                     Toast.makeText(getActivity(), "Enable Your GPS", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        activity.getIbAccount().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+                alert.setTitle("Do You Want to Logout ?");
+
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogBox, int id) {
+                        new UserSessionRepositoryRepository(activity).destroy();
+                        Intent intent = new Intent(activity, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                        dialogBox.cancel();
+                    }
+                });
+
+                AlertDialog dialog = alert.create();
+                dialog.show();
             }
         });
 
