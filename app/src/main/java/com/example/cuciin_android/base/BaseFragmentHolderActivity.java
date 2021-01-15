@@ -59,4 +59,8 @@ public abstract class BaseFragmentHolderActivity extends BaseActivity {
             }
         });
     }
+
+    public ImageButton getIbAccount() {
+        return ibAccount;
+    }
 }
